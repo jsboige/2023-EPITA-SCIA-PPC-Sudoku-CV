@@ -4,6 +4,7 @@
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
 # User-specific files
+.vscode
 *.rsuser
 *.suo
 *.user
@@ -12,6 +13,9 @@
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
+
+# Adding VS workspace files
+*.code-workspace
 
 # Mono auto generated files
 mono_crash.*
@@ -348,3 +352,12 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# Rider working folder
+.idea/
+
+
+# Local History for Visual Studio
+.history/
+.localhistory/
+
