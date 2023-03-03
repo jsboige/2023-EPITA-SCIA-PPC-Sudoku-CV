@@ -1,4 +1,4 @@
-# 2023-EPITA-SCIA-PPC-Sudoku-CV
+# 2023-EPITA-SCIA-PPC-Sudoku-NLP
 Bienvenue sur le dépôt du TP Sudoku.....
 
 Chaque groupe est invité à créer un [Fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo) de ce dépôt principal muni d'un compte sur Github, et d'indiquer dans le fil de suivi de projet du groupe sur le forum son adresse. 
@@ -13,7 +13,7 @@ Le fichier de solution "Sudoku.sln" constitue l'environnement de base du travail
 En l'état, la solution contient:
 - Un répertoire Puzzles contenant 3 fichiers de Sudokus de difficultés différentes
 - Un projet Sudoku.Shared: il consitue la librairie de base de l'application et fournit la définition de la classe représentant un Sudoku (SudokuGrid) et l'interface à implémenter par les solvers de sudoku (ISudokuSolver).
-- Un projet Sudoku.Z3Solvers qui fournit plusieurs exemples de solvers utilisant la librairie z3 grâce au package Nuget correspondant, et qui illustre également l'utilisation de Python depuis le langage c# via  [Python.Net](https://pythonnet.github.io/) grâce aux packages Nuget correspondants.
+- Un projet Sudoku.Backtracking qui fournit plusieurs solvers utilisant la méthode simple du backtracking, et qui illustre également l'utilisation de Python depuis le langage c# via  [Python.Net](https://pythonnet.github.io/) grâce aux packages Nuget correspondants.
 - Un projet Sudoku.Benchmark de Console permettant de tester les solvers de Sudoku de façon individuels ou dans le cadre d'un Benchmark comparatif. Ce projet référence les projets de solvers, et c'est celui que vous devez lancer pour tester votre code.
 
 Il s'agira pour chaque groupe de travail, sur le modèle du projet z3 en exemple, de commencer par:
