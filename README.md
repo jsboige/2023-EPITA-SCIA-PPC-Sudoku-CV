@@ -16,7 +16,7 @@ En l'état, la solution contient:
 - Un projet Sudoku.Backtracking qui fournit plusieurs solvers utilisant la méthode simple du backtracking, et qui illustre également l'utilisation de Python depuis le langage c# via  [Python.Net](https://pythonnet.github.io/) grâce aux packages Nuget correspondants.
 - Un projet Sudoku.Benchmark de Console permettant de tester les solvers de Sudoku de façon individuels ou dans le cadre d'un Benchmark comparatif. Ce projet référence les projets de solvers, et c'est celui que vous devez lancer pour tester votre code.
 
-Il s'agira pour chaque groupe de travail, sur le modèle du projet z3 en exemple, de commencer par:
+Il s'agira pour chaque groupe de travail, sur le modèle du projet backtracking en exemple, de commencer par:
 
 - [rajouter à la solution votre propre projet](https://docs.microsoft.com/fr-fr/visualstudio/get-started/tutorial-projects-solutions?view=vs-2019), typiquement une bibliothèque de classes en c# au format .Net standard 2.1,
 - munir votre projet des librairies nécessaires, sous forme de [références](https://docs.microsoft.com/fr-fr/visualstudio/ide/managing-references-in-a-project?view=vs-2019) ou de packages [Nuget](https://docs.microsoft.com/fr-fr/nuget/consume-packages/install-use-packages-visual-studio). Votre projet devrait posséder une référence vers le projet partagé contenant la définition de la classe d'une grille de Sudoku et de l'interface d'un solver de Sudoku.
