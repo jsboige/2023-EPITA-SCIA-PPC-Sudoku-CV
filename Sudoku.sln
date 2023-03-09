@@ -14,7 +14,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Puzzles", "Puzzles", "{5351
 		Puzzles\Sudoku_top95.txt = Puzzles\Sudoku_top95.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku.Backtracking", "Sudoku.Backtracking\Sudoku.Backtracking.csproj", "{1C50AE77-2CE9-4BD8-ADFE-3C3A255FFC78}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sudoku.Backtracking", "Sudoku.Backtracking\Sudoku.Backtracking.csproj", "{1C50AE77-2CE9-4BD8-ADFE-3C3A255FFC78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku.Demo", "Sudoku.Demo\Sudoku.Demo.csproj", "{AD78958C-0B81-436B-BB99-9485B7045C98}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,6 +36,10 @@ Global
 		{1C50AE77-2CE9-4BD8-ADFE-3C3A255FFC78}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C50AE77-2CE9-4BD8-ADFE-3C3A255FFC78}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C50AE77-2CE9-4BD8-ADFE-3C3A255FFC78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD78958C-0B81-436B-BB99-9485B7045C98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD78958C-0B81-436B-BB99-9485B7045C98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD78958C-0B81-436B-BB99-9485B7045C98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD78958C-0B81-436B-BB99-9485B7045C98}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
