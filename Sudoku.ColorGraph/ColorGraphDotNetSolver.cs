@@ -6,7 +6,7 @@ namespace Sudoku.ColorGraph
     {
         public SudokuGrid Solve(SudokuGrid s)
         {
-            throw new NotImplementedException();
+	        return s;
         }
     }
 }
