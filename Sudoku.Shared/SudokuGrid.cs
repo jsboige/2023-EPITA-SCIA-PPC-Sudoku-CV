@@ -298,7 +298,6 @@ namespace Sudoku.Shared
 
                 foreach (var file in Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory))
                 {
-                    Console.WriteLine(file);
                     if (file.EndsWith("dll") && !(Path.GetFileName(file).StartsWith("libz3")))
                     {
                         try
