@@ -9,8 +9,6 @@ using System.Threading.Tasks;
 namespace Sudoku.ChocoSolver{
     public class ChocoSolver : PythonSolverBase
     {
-        public class EmptyPythonSolver 
-	{
 		public override Shared.SudokuGrid Solve(Shared.SudokuGrid s)
 		{
 			//System.Diagnostics.Debugger.Break();
@@ -53,7 +51,6 @@ namespace Sudoku.ChocoSolver{
 			base.InitializePythonComponents();
 		}
     }
-}
 }
 
 
