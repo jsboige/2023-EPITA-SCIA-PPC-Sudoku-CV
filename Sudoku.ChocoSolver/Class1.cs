@@ -1,5 +1,7 @@
-﻿namespace Sudoku.ChocoSolver;
-public class Class1
-{
-
+﻿namespace Sudoku.ChocoSolver{
+    public class ChocoSolver
+    {
+        
+    }
 }
+
