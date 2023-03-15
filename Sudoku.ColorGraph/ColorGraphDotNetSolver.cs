@@ -1,4 +1,9 @@
-﻿using Sudoku.Shared;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Sudoku.Shared;
 
 namespace Sudoku.ColorGraph
 {
@@ -6,7 +11,9 @@ namespace Sudoku.ColorGraph
     {
         public SudokuGrid Solve(SudokuGrid s)
         {
-            throw new NotImplementedException();
+            // launch the solver
+            new CGraph(s);
+            return s;
         }
     }
 }
