@@ -6,6 +6,7 @@ namespace Sudoku.ColorGraph
     {
         public SudokuGrid Solve(SudokuGrid s)
         {
+            new CGraph(s);
 	        return s;
         }
     }
