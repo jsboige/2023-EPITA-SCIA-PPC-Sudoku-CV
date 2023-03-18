@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 namespace Sudoku.ChocoSolver{
     public class ChocoSolver : PythonSolverBase
     {
+		public ChocoSolver()
+		{
+
+		}
 		public override Shared.SudokuGrid Solve(Shared.SudokuGrid s)
 		{
 			//System.Diagnostics.Debugger.Break();
@@ -29,12 +33,13 @@ namespace Sudoku.ChocoSolver{
 				
 				// run the Python script
 				string code = Resource1.EmptyPythonSolver_py;
+				Console.WriteLine("Launch Python");
 				scope.Exec(code);
-
+				Console.WriteLine("Execution is over.");
 				
 				//Retrieve solved Sudoku variable
 				var result = scope.Get("r");
-
+				
 				//Convert back to C# object
 				var managedResult = result.As<int[][]>();
 				//var convertesdResult = managedResult.Select(objList => objList.Select(o => (int)o).ToArray()).ToArray();
