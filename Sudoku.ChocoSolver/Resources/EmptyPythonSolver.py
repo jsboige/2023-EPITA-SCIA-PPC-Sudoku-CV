@@ -7,4 +7,5 @@
 #           (0,7,0,0,0,0,5,2,0),
 #           (9,0,0,0,6,5,0,0,0),
 #           (0,4,0,9,7,0,0,0,0))
+print(f'instance is {type(instance)}')
 r=instance
