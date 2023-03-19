@@ -1,48 +1,49 @@
 ﻿using System;
+using System.Collections.Generic;
 using Sudoku.Shared;
 
 namespace Sudoku.ParticleSwarmOptimization
 {
-    public class Organism : IComparable
+    public abstract class Organism : IComparable
     {
-        private bool isWorker;
-        private SudokuGrid original;
-        private SudokuGrid solution;
+        protected SudokuGrid solution;
+
+        public SudokuGrid Solution => solution;
+
         private int error;
         public int Error
         {
             get { return error; }
         }
 
-        public Organism(SudokuGrid s, bool is_worker)
+        public Organism()
         {
-            isWorker = is_worker;
-            original = s;
-            solution = s.CloneSudoku();
+            solution = PSOSolver.original.CloneSudoku();
             
-            // Fill the Sudoku grid with random values but repecting column constraint
+            // Fill the Sudoku grid with random values but respecting line constraint
             Random r = new Random();
-            for (int i = 0; i < 9; ++i)
+            foreach (var rowIndex in SudokuGrid.NeighbourIndices)
             {
-                int[] possibleNumbers = SudokuGridHelpers.AvailableNumbersForColumn(solution, i);
+                // Get possible numbers in a column
+                var possibleNumbers = new List<int>(){1,2,3,4,5,6,7,8,9};
                 for (int j = 0; j < 9; ++j)
                 {
-                    if (solution.Cells[i][j] != 0)
-                    {
-                        continue;
-                    }
+                    if (solution.Cells[rowIndex][j] != 0)
+                        possibleNumbers.Remove(solution.Cells[rowIndex][j]);
+                }
 
-                    int randomIndex = 0;
-                    do
-                    {
-                        randomIndex =  r.Next(0, possibleNumbers.Length);
-                    } while (possibleNumbers[randomIndex] == 0);
-                    solution.Cells[i][j] = possibleNumbers[randomIndex];
-                    possibleNumbers[randomIndex] = 0;
+                // Place possible numbers
+                foreach (var colIndex in SudokuGrid.NeighbourIndices)
+                {
+                    if (solution.Cells[rowIndex][colIndex] != 0)
+                        continue;
+
+                    var randomIndex =  r.Next(0, possibleNumbers.Count);
+                    solution.Cells[rowIndex][colIndex] = possibleNumbers[randomIndex];
+                    possibleNumbers.RemoveAt(randomIndex);
                 }
             }
-            error = solution.NbErrors(s);
-            Console.WriteLine($"Error: {Error} worker? {is_worker}");
+            error = solution.NbErrors(PSOSolver.original);
         }
 
         public int CompareTo(object other)
@@ -51,5 +52,7 @@ namespace Sudoku.ParticleSwarmOptimization
                 throw new ArgumentException();
             return Error.CompareTo(((Organism) other).Error);
         }
+
+        public abstract void SearchBetterSolution();
     }
 }
