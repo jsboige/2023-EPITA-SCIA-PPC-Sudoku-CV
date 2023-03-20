@@ -14,7 +14,9 @@ namespace Sudoku.ParticleSwarmOptimization
         private Worker bestWorker;
         private Explorer bestExplorer;
         private Organism bestOrganism;
-        
+
+        public Organism BestOrganism => bestOrganism;
+
         public Hive(uint nb_explorer, uint nb_worker)
         {
             workers = new Worker[nb_worker];
@@ -23,7 +25,7 @@ namespace Sudoku.ParticleSwarmOptimization
             Parallel.For(0, nb_worker, i => { workers[i] = new Worker(); });
             Parallel.For(0, nb_explorer, i => { explorers[i] = new Explorer(); });
             UpdateBestOrganism();
-            Console.WriteLine($"Lowest error: {bestOrganism.Error}");
+            Console.WriteLine($"Lowest error: {bestOrganism?.Error}");
         }
 
         private void UpdateBestOrganism()
@@ -45,7 +47,7 @@ namespace Sudoku.ParticleSwarmOptimization
                 Parallel.ForEach(explorers, organism => organism.SearchBetterSolution());
                 Parallel.ForEach(workers, organism => organism.SearchBetterSolution());
                 UpdateBestOrganism();
-                workers.Max().Replace(bestWorker, bestExplorer);
+                workers.Max()?.Replace(bestWorker, bestExplorer);
             }
             return bestOrganism.Solution;
         }

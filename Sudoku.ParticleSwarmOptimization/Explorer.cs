@@ -6,7 +6,9 @@ namespace Sudoku.ParticleSwarmOptimization
     {
         public override void SearchBetterSolution()
         {
-            throw new System.NotImplementedException();
+            // Explore
+            solution = SudokuUtils.RandomSolution();
+            error = solution.NbErrors(PSOSolver.original);
         }
     }
 }

@@ -7,6 +7,7 @@ namespace Sudoku.ParticleSwarmOptimization
     {
         public override void SearchBetterSolution()
         {
+            // FIXME: If is 'worker' organism then: Evolve or Mutate
             throw new System.NotImplementedException();
         }
 
