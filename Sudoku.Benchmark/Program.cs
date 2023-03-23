@@ -78,7 +78,7 @@ namespace Sudoku.Benchmark
         private static bool RunMenu()
         {
 
-            Console.WriteLine("Select Mode: \n1-Single Solver Test, \n2-Benchmarks, \n3-Exit program");
+            Console.WriteLine("Select Mode: \n1-Single Solver Test, \n2-Benchmarks, \n3-Notre solution\n4-Exit program");
             var strMode = Console.ReadLine();
             int.TryParse(strMode, out var intMode);
             //Console.SetBufferSize(130, short.MaxValue - 100);
@@ -89,6 +89,9 @@ namespace Sudoku.Benchmark
                     break;
                 case 2:
                     Benchmark();
+                    break;
+                case 3:
+                    Console.WriteLine("tkt ça marche");
                     break;
                 default:
                     return true;
