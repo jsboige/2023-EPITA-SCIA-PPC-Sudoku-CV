@@ -1,0 +1,4 @@
+import numpy as np
+
+A = np.array(instance, dtype=np.uint8)
+print(A)
