@@ -18,6 +18,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sudoku.Backtracking", "Sudo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku.Demo", "Sudoku.Demo\Sudoku.Demo.csproj", "{AD78958C-0B81-436B-BB99-9485B7045C98}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku.GeneticSharp", "Sudoku.GeneticSharp\Sudoku.GeneticSharp.csproj", "{22DDB3A3-6000-4964-A974-D640AB72E019}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
