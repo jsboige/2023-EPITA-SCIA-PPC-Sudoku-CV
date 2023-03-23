@@ -22,7 +22,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqToZ3", "LinqToZ3\LinqTo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku.ColorGraph", "Sudoku.ColorGraph\Sudoku.ColorGraph.csproj", "{224A4C69-2DC9-40CA-AFFE-CE4D0EF8DA8A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OR-Tools", "OR-Tools\OR-Tools.csproj", "{3A816C33-9B44-45B6-9BFF-BAC4C23CFA27}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku.OrTools", "Sudoku.OrTools\Sudoku.OrTools.csproj", "{930422F3-A562-4EF9-96AE-C2D38707BD3D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -54,10 +54,10 @@ Global
 		{224A4C69-2DC9-40CA-AFFE-CE4D0EF8DA8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{224A4C69-2DC9-40CA-AFFE-CE4D0EF8DA8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{224A4C69-2DC9-40CA-AFFE-CE4D0EF8DA8A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3A816C33-9B44-45B6-9BFF-BAC4C23CFA27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3A816C33-9B44-45B6-9BFF-BAC4C23CFA27}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3A816C33-9B44-45B6-9BFF-BAC4C23CFA27}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3A816C33-9B44-45B6-9BFF-BAC4C23CFA27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{930422F3-A562-4EF9-96AE-C2D38707BD3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{930422F3-A562-4EF9-96AE-C2D38707BD3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{930422F3-A562-4EF9-96AE-C2D38707BD3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{930422F3-A562-4EF9-96AE-C2D38707BD3D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
