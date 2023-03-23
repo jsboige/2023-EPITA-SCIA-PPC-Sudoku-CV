@@ -13,10 +13,12 @@ namespace Sudoku.ParticleSwarmOptimization
         protected int error;
         public int Error => error;
 
+        protected int age;
         public Organism()
         {
             solution = SudokuUtils.RandomSolution();
             error = solution.NbErrors(PSOSolver.original);
+            age = 0;
         }
 
         public int CompareTo(object? other)

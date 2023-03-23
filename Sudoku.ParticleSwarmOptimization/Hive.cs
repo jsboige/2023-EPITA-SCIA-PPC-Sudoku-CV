@@ -25,23 +25,24 @@ namespace Sudoku.ParticleSwarmOptimization
             Parallel.For(0, nb_worker, i => { workers[i] = new Worker(); });
             Parallel.For(0, nb_explorer, i => { explorers[i] = new Explorer(); });
             UpdateBestOrganism();
-            Console.WriteLine($"Lowest error: {bestOrganism?.Error}");
         }
 
         private void UpdateBestOrganism()
         {
             bestWorker = workers.Min();
             bestExplorer = explorers.Min();
-            if (bestWorker.Error < bestExplorer.Error)
+            // Console.WriteLine("Best Worker: " + bestWorker.Error + " Best Explorer:" + bestExplorer.Error);
+            if (bestOrganism == null || bestWorker.Error < bestOrganism.Error)
                 bestOrganism = bestWorker;
-            else
+            if (bestOrganism == null || bestExplorer.Error < bestOrganism.Error)
                 bestOrganism = bestExplorer;
         }
 
         public SudokuGrid Solve()
         {
-            for (int i = 0; i < 10000; i++)
+            for (int i = 0; i < 100000; i++)
             {
+                //Console.WriteLine("Epoch: " + i + " Error: " + bestOrganism.Error);
                 if (bestOrganism.Error == 0)
                     break;
                 Parallel.ForEach(explorers, organism => organism.SearchBetterSolution());

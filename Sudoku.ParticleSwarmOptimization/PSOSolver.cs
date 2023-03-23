@@ -10,7 +10,7 @@ namespace Sudoku.ParticleSwarmOptimization
         {
             // Initialization of the hive
             original = s;
-            var hive = new Hive(10, 1);
+            var hive = new Hive(1, 100);
             return hive.Solve();
         }
     }
