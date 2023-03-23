@@ -193,6 +193,9 @@ namespace Z3.LinqBinding.Sudoku
       {
          var toReturn = new List<SudokuAsArray>();
          var cells = new List<int>(81);
+         Console.WriteLine("debut");
+         Console.WriteLine(lines.Length);
+         Console.WriteLine("fin");
          foreach (var line in lines)
          {
             if (line.Length > 0)
@@ -232,17 +235,37 @@ namespace Z3.LinqBinding.Sudoku
          return toReturn;
       }
 
-   }
+        public static SudokuAsArray ParseTest(SudokuGrid s)
+        {
+            var cells = new List<int>(81);
+            for (int row = 0; row < 9; row++)
+            {
+                for (int col = 0; col < 9; col++)
+                {
+                    cells.Add(s.Cells[row][col]);
+                }
+            }
+            var toReturn = new SudokuAsArray() { Cells = new List<int>(cells) };
+            cells.Clear();
+            return toReturn;
+        }
+    }
 }
 namespace LinqToZ3 {
 public class LinqFirstSolver : Sudoku.Shared.ISudokuSolver
 {
     public SudokuGrid Solve(SudokuGrid s)
-    {   var context = new Z3.LinqBinding.Z3Context();
+    {
+        var context = new Z3.LinqBinding.Z3Context();
         Z3.LinqBinding.Sudoku.SudokuAsArray.Create(context);
-        var grid = Z3.LinqBinding.Sudoku.SudokuAsArray.Parse(s.ToString());
-        //grid.CreateTheorem(context);
-        return SudokuGrid.ReadSudoku(s.ToString());
+        var grid = Z3.LinqBinding.Sudoku.SudokuAsArray.ParseTest(s);
+        var theorem = grid.CreateTheorem(context);
+        var sudokuSolved = theorem.Solve();
+        Console.WriteLine("DEBUT TEST");
+        Console.WriteLine(sudokuSolved);
+        Console.WriteLine("FIN TEST");
+        var toReturn = SudokuGrid.ReadSudoku(sudokuSolved.ToString());
+        return toReturn;
     }
 }
 }
