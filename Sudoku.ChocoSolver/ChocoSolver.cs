@@ -1,6 +1,6 @@
 ﻿namespace Sudoku.Shared
 {
-    public class EmptySolver : ISudokuSolver
+    public class ChocoSolver : ISudokuSolver
     {
         public SudokuGrid Solve(SudokuGrid s)
         {
