@@ -25,11 +25,10 @@ namespace Sudoku.ChocoSolver{
 			{
 				// convert the Cells array object to a PyObject
 				PyObject pyCells = s.Cells.ToPython();
-
+				
 				// create a Python variable "instance"
 				scope.Set("instance", pyCells);
-
-				//this.AddNumpyConverterScript(scope);
+				this.AddNumpyConverterScript(scope);
 				
 				// run the Python script
 				string code = Resource1.EmptyPythonSolver_py;

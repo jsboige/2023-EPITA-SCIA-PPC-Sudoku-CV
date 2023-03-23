@@ -50,7 +50,7 @@ namespace Sudoku.Shared
         }
 		public static void InstallPipModule(string moduleName, string version = "", bool force = false)
 		{
-			Task task = Task.Run(() => InstallPipModuleAsync(moduleName, version, force));
+			Task task = Task.Run( () => InstallPipModuleAsync(moduleName, version, force));
 			task.Wait();
 
 		}
@@ -132,7 +132,7 @@ namespace Sudoku.Shared
             // };
             //
             // // install in local directory. if you don't set it will install in local app data of your user account
-             //Python.Deployment.Installer.InstallPath = Path.GetFullPath(".");
+            //Python.Deployment.Installer.InstallPath = Path.GetFullPath(".");
             //
             // see what the installer is doing
 
@@ -145,16 +145,14 @@ namespace Sudoku.Shared
 
 
             Installer.LogMessage += Console.WriteLine;
-
             //
             // install from the given source
 			await Python.Deployment.Installer.SetupPython();
 
 			await Installer.TryInstallPip();
 
-
-			//Python.Deployment.Installer.SetupPython().Wait();
-			//Installer.TryInstallPip();
+			Python.Deployment.Installer.SetupPython().Wait();
+			Installer.TryInstallPip();
 
         }
 
@@ -164,8 +162,8 @@ namespace Sudoku.Shared
 
 
             PythonEngine.Initialize();
-            // dynamic sys = PythonEngine.ImportModule("sys");
-            // Console.WriteLine("Python version: " + sys.version);
+            //dynamic sys = PythonEngine.ImportModule("sys");
+            //Console.WriteLine("Python version: " + sys.version);
         }
 
 
@@ -174,10 +172,8 @@ namespace Sudoku.Shared
 
         protected void AddNumpyConverterScript(PyModule scope)
         {
-
 			string numpyConverterCode = Resources.numpy_converter_py;
 			scope.Exec(numpyConverterCode);
-			
 		}
 			
 
