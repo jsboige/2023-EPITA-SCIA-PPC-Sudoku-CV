@@ -218,12 +218,12 @@ namespace Sudoku.Shared
 
         public static async Task InstallPip()
         {
-            string path = Path.Combine(MacInstaller.InstallPythonHome, "Lib");
+            string path = Path.Combine(MacInstaller.InstallPythonHome, "");
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path);
             MacInstaller.RunCommand("cd " + path + " && curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py");
             // MacInstaller.RunCommand("cd " + MacInstaller.EmbeddedPythonHome + " && python.exe Lib\\get-pip.py");
-            MacInstaller.RunCommand("cd " + MacInstaller.InstallPythonHome + " && python get-pip.py");
+            MacInstaller.RunCommand("cd " + MacInstaller.InstallPythonHome + " && python3 get-pip.py");
         }
 
         public static async Task<bool> TryInstallPip(bool force = false)
