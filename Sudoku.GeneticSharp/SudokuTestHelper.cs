@@ -66,7 +66,8 @@ namespace Sudoku.GeneticSharp
 
             var bestIndividual = ((ISudokuChromosome)ga.Population.BestChromosome);
             var solutions = bestIndividual.GetSudokus();
-            
+
+            Console.WriteLine($"Best fitness: {solutions.Max(solutionSudoku => fitness.Evaluate(solutionSudoku))}");
             return solutions.First();
         }
     }

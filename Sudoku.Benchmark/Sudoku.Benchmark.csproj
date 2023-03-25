@@ -5,11 +5,11 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="BenchmarkDotNet" Version="0.13.5" />
-    <PackageReference Include="GeneticSharp" Version="3.1.4" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sudoku.Backtracking\Sudoku.Backtracking.csproj" />
     <ProjectReference Include="..\Sudoku.Demo\Sudoku.Demo.csproj" />
+    <ProjectReference Include="..\Sudoku.GeneticSharp\Sudoku.GeneticSharp.csproj" />
     <ProjectReference Include="..\Sudoku.Shared\Sudoku.Shared.csproj" />
   </ItemGroup>
 </Project>
