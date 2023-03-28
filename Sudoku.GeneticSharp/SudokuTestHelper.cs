@@ -47,13 +47,13 @@ namespace Sudoku.GeneticSharp
         public static SudokuBoard Eval(IChromosome sudokuChromosome, SudokuBoard sudokuBoard, int populationSize,
             double fitnessThreshold, int generationNb)
         {
-            var fitness = new SudokuFitness(sudokuBoard);
-            var selection = new EliteSelection();
-            var crossover = new UniformCrossover();
-            var mutation = new UniformMutation();
+            SudokuFitness fitness = new SudokuFitness(sudokuBoard);
+            EliteSelection selection = new EliteSelection();
+            UniformCrossover crossover = new UniformCrossover();
+            UniformMutation mutation = new UniformMutation();
 
-            var population = new Population(populationSize, populationSize, sudokuChromosome);
-            var ga = new GeneticAlgorithm(population, fitness, selection, crossover, mutation)
+            Population population = new Population(populationSize, populationSize, sudokuChromosome);
+            GeneticAlgorithm ga = new GeneticAlgorithm(population, fitness, selection, crossover, mutation)
             {
                 Termination = new OrTermination(new ITermination[]
                 {
@@ -64,11 +64,12 @@ namespace Sudoku.GeneticSharp
 
             ga.Start();
 
-            var bestIndividual = ((ISudokuChromosome)ga.Population.BestChromosome);
-            var solutions = bestIndividual.GetSudokus();
+            ISudokuChromosome bestIndividual = (ISudokuChromosome)ga.Population.BestChromosome;
+            IList<SudokuBoard> solutions = bestIndividual.GetSudokus();
 
-            Console.WriteLine($"Best fitness: {solutions.Max(solutionSudoku => fitness.Evaluate(solutionSudoku))}");
-            return solutions.First();
+            Console.WriteLine($"Best fitness: {solutions.Min(solutionSudoku => fitness.Evaluate(solutionSudoku))}");
+            // Return the best solution
+            return solutions.First(solutionSudoku => fitness.Evaluate(solutionSudoku) == solutions.Min(solutionSudoku => fitness.Evaluate(solutionSudoku)));
         }
     }
 }
