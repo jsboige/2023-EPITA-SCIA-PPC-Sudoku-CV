@@ -10,6 +10,6 @@
     <ProjectReference Include="..\Sudoku.Backtracking\Sudoku.Backtracking.csproj" />
     <ProjectReference Include="..\Sudoku.Demo\Sudoku.Demo.csproj" />
     <ProjectReference Include="..\Sudoku.Shared\Sudoku.Shared.csproj" />
-    <ProjectReference Include="..\Sudoku.ChocoSolver\Sudoku.ChocoSolver.csproj"/>
+    <ProjectReference Include="..\Sudoku.z3\Sudoku.z3.csproj"/>
   </ItemGroup>
 </Project>
