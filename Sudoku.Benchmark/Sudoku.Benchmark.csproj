@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Sudoku.ChocoSolver\Sudoku.ChocoSolver.csproj" />
     <ProjectReference Include="..\Sudoku.Backtracking\Sudoku.Backtracking.csproj" />
+    <ProjectReference Include="..\Sudoku.ParticleSwarmOptimization\Sudoku.ParticleSwarmOptimization.csproj" />
     <ProjectReference Include="..\Sudoku.ColorGraph\Sudoku.ColorGraph.csproj" />
     <ProjectReference Include="..\Sudoku.Demo\Sudoku.Demo.csproj" />
     <ProjectReference Include="..\Sudoku.Shared\Sudoku.Shared.csproj" />
