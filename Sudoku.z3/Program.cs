@@ -1,22 +1,32 @@
-﻿using Sudoku.Shared;
 using System;
 using Microsoft.Z3;
+using System;
 
-namespace Sudoku.z3
+namespace SudokuSolver
 {
-	public class z3Solver : ISudokuSolver
-	{
-		public z3Solver()
-		{
-
-		}
-		public SudokuGrid Solve(SudokuGrid s)
-		{
-
-			using (Context ctx = new Context())
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Définir une grille de sudoku
+            int[,] grid = new int[,]
             {
-				int[][] grid = s.Cells;
+                { 0, 3, 0, 0, 0, 0, 0, 0, 0 },
+                { 0, 0, 7, 0, 0, 0, 0, 5, 0 },
+                { 5, 0, 0, 0, 1, 8, 0, 0, 0 },
+                { 0, 0, 0, 0, 0, 0, 8, 0, 0 },
+                { 0, 2, 0, 0, 9, 0, 0, 0, 0 },
+                { 0, 0, 0, 0, 4, 0, 3, 0, 0 },
+                { 0, 0, 1, 0, 0, 0, 0, 0, 0 },
+                { 0, 0, 0, 0, 0, 0, 0, 9, 4 },
+                { 0, 0, 0, 0, 0, 0, 0, 0, 0 }
+            };
+
+            // Créer un solveur Z3
+            using (Context ctx = new Context())
+            {
                 Solver solver = ctx.MkSolver();
+
                 // Créer une variable pour chaque case de la grille
                 IntExpr[,] vars = new IntExpr[9, 9];
                 for (int i = 0; i < 9; i++)
@@ -75,16 +85,15 @@ namespace Sudoku.z3
                         solver.Assert(regionConstraint);
 
                         // Ajouter les valeurs connues de la grille
-                        if (grid[i][j] != 0)
+                        if (grid[i, j] != 0)
                         {
-                            solver.Assert(ctx.MkEq(vars[i, j], ctx.MkInt(grid[i][j])));
+                            solver.Assert(ctx.MkEq(vars[i, j], ctx.MkInt(grid[i, j])));
                         } 
                     }
                         
                 }
                 
                 // Résoudre le sudoku
-				SudokuGrid r = new SudokuGrid();
                 if (solver.Check() == Status.SATISFIABLE)
                 {
                     Model model = solver.Model;
@@ -92,8 +101,7 @@ namespace Sudoku.z3
                     {
                         for (int j = 0; j < 9; j++)
                         {
-							int value = (model.Evaluate(vars[i, j]) as IntNum).Int;
-                            r.Cells[i][j] = value;
+                            Console.Write($"{model.Evaluate(vars[i, j])} ");
                         }
                         Console.WriteLine();
                     }
@@ -102,8 +110,7 @@ namespace Sudoku.z3
                 {
                     Console.WriteLine("Le sudoku n'a pas de solution.");
                 } 
-				return r;
             }
-		}
-	}
+        }
+    }
 }
