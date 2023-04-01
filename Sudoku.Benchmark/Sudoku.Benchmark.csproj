@@ -7,7 +7,9 @@
     <PackageReference Include="BenchmarkDotNet" Version="0.13.5" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Sudoku.ChocoSolver\Sudoku.ChocoSolver.csproj" />
     <ProjectReference Include="..\Sudoku.Backtracking\Sudoku.Backtracking.csproj" />
+    <ProjectReference Include="..\Sudoku.ParticleSwarmOptimization\Sudoku.ParticleSwarmOptimization.csproj" />
     <ProjectReference Include="..\Sudoku.ColorGraph\Sudoku.ColorGraph.csproj" />
     <ProjectReference Include="..\Sudoku.Demo\Sudoku.Demo.csproj" />
     <ProjectReference Include="..\Sudoku.OrTools\Sudoku.OrTools.csproj" />
