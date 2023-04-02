@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku.ParticleSwarmOptimiz
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z3.LinqBinding", "Z3.LinqBinding\Z3.LinqBinding.csproj", "{451158D9-16A6-4646-8C3C-B7A2606BEA58}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku.GeneticSharp", "Sudoku.GeneticSharp\Sudoku.GeneticSharp.csproj", "{22DDB3A3-6000-4964-A974-D640AB72E019}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,8 @@ Global
 		{451158D9-16A6-4646-8C3C-B7A2606BEA58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{451158D9-16A6-4646-8C3C-B7A2606BEA58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{451158D9-16A6-4646-8C3C-B7A2606BEA58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22DDB3A3-6000-4964-A974-D640AB72E019}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22DDB3A3-6000-4964-A974-D640AB72E019}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
