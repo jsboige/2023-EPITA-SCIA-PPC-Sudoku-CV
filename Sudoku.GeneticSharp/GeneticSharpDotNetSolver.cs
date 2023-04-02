@@ -36,9 +36,9 @@ namespace Sudoku.GeneticSharp
         public SudokuGrid Solve(SudokuGrid s)
         {
             SudokuBoard sdkB = GridToBoard(s);
-            var chromosome = new SudokuPermutationsChromosome(sdkB);
-            // Le chromosome de permutation est représenté par une liste de 9 entiers représentant des indexes de ligne de permutations du sudoku
+            SudokuChromosome chromosome = new SudokuChromosome(sdkB);
             // var chromosome = new SudokuCellsChromosome(sdkB);
+            // var chromosome = new SudokuPermutationsChromosome(sdkB);
             var sdkBoard = SudokuTestHelper.Eval(chromosome, sdkB, 5000, 0, 200);
 
             return BoardToGrid(sdkBoard);

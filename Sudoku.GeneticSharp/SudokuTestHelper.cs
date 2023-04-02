@@ -49,10 +49,13 @@ namespace Sudoku.GeneticSharp
         {
             SudokuFitness fitness = new SudokuFitness(sudokuBoard);
             EliteSelection selection = new EliteSelection();
-            UniformCrossover crossover = new UniformCrossover();
-            UniformMutation mutation = new UniformMutation();
-
-            Population population = new Population(populationSize, populationSize, sudokuChromosome);
+            // UniformCrossover crossover = new UniformCrossover();
+            // UniformMutation mutation = new UniformMutation();
+            OrderedCrossover crossover = new OrderedCrossover();
+            PartialShuffleMutation mutation = new PartialShuffleMutation();
+            
+            
+            MyPopulation population = new MyPopulation(populationSize, populationSize, sudokuChromosome);
             GeneticAlgorithm ga = new GeneticAlgorithm(population, fitness, selection, crossover, mutation)
             {
                 Termination = new OrTermination(new ITermination[]
