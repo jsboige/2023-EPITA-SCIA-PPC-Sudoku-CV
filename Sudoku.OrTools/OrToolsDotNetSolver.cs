@@ -5,7 +5,20 @@ using IntVar = Google.OrTools.Sat.IntVar;
 
 namespace Sudoku.OrTools
 {
-    public class OrToolsDotNetSolver : ISudokuSolver
+
+
+	//Pour la suite je vous invite à :
+
+	//Tester d'autres moteurs d'ORTools et en contraster les performances:
+	//L'autre solver par contrainte : https://developers.google.com/optimization/cp/original_cp_solver?hl=fr
+	//Le solver MIP comme présenté dans l'article suivant: https://www.kaggle.com/code/pintowar/modeling-a-sudoku-solver-with-or-tools/notebook
+
+	//Optimiser votre première solution en explorant les capacités de l'API d'ORTools(créez de nouvelles classes de solver pour en contraster les performances, en utilisant au besoin l'héritage pour mutualiser votre code)
+	//Exemple: Optimisation du code avec utilisation de model.NewIntVarFromDomain, model.AddAllDifferent, model.AddDecisionStrategy etc.
+	//	Ou bien mise en cache du model sans masque à résoudre, utilisation de contraintes unaires (x==const) pour le masque et de model.AddAssumption /ClearAssumptions ou AddHint /ClearHint pour rajouter / enlever les contraintes du masque, ou bien utilisation de model.Model.WriteTo /MergeFrom etc.
+
+
+	public class OrToolsDotNetSolver : ISudokuSolver
     {
         // https://developers.google.com/optimization/cp
         // https://developers.google.com/optimization/cp/cp_solver
