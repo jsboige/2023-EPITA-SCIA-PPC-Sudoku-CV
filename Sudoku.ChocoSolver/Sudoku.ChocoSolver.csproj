@@ -25,4 +25,11 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="IKVM" Version="8.5.0-develop0690" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <IkvmReference Include="SudokuSolver-1.jar" />
+  </ItemGroup>
 </Project>
