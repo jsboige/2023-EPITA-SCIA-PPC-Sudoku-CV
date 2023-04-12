@@ -49,10 +49,9 @@ namespace Sudoku.GeneticSharp
         {
             SudokuFitness fitness = new SudokuFitness(sudokuBoard);
             EliteSelection selection = new EliteSelection();
-            // UniformCrossover crossover = new UniformCrossover();
-            // UniformMutation mutation = new UniformMutation();
-            OrderedCrossover crossover = new OrderedCrossover();
-            PartialShuffleMutation mutation = new PartialShuffleMutation();
+            
+            CycleCrossover crossover = new CycleCrossover();
+            TworsMutation mutation = new TworsMutation();
 
 
             Population population = new Population(populationSize, populationSize, sudokuChromosome);
@@ -70,8 +69,6 @@ namespace Sudoku.GeneticSharp
             ISudokuChromosome bestIndividual = (ISudokuChromosome)ga.Population.BestChromosome;
             IList<SudokuBoard> solutions = bestIndividual.GetSudokus();
 
-            Console.WriteLine($"Best fitness: {solutions.Min(solutionSudoku => fitness.Evaluate(solutionSudoku))}");
-            // Return the best solution
             return solutions.First(solutionSudoku => fitness.Evaluate(solutionSudoku) == solutions.Min(solutionSudoku => fitness.Evaluate(solutionSudoku)));
         }
     }

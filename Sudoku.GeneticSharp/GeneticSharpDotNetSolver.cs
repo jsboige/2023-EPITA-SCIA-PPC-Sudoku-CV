@@ -36,10 +36,18 @@ namespace Sudoku.GeneticSharp
         public SudokuGrid Solve(SudokuGrid s)
         {
             SudokuBoard sdkB = GridToBoard(s);
+            
             SudokuChromosome chromosome = new SudokuChromosome(sdkB);
             // var chromosome = new SudokuCellsChromosome(sdkB);
-            // var chromosome = new SudokuPermutationsChromosome(sdkB);
-            var sdkBoard = SudokuTestHelper.Eval(chromosome, sdkB, 5000, 0, 200);
+            
+            Console.WriteLine("Enter population size:");
+            string populationSize = Console.ReadLine();
+            int.TryParse(populationSize, out int popSize);
+            Console.WriteLine("Enter number of generations:");
+            string genNb = Console.ReadLine();
+            int.TryParse(genNb, out int genNbInt);
+            
+            var sdkBoard = SudokuTestHelper.Eval(chromosome, sdkB, popSize, 0, genNbInt);
 
             return BoardToGrid(sdkBoard);
         }

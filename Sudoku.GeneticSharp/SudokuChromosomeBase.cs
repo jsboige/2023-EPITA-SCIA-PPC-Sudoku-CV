@@ -6,14 +6,14 @@ using GeneticSharp.Extensions;
 
 namespace Sudoku.GeneticSharp
 {
-  public abstract class MyChromosomeBase : ChromosomeBase, ISudokuChromosome
+  public abstract class SudokuChromosomeBase : ChromosomeBase, ISudokuChromosome
   {
     private readonly SudokuBoard _targetSudokuBoard;
     private Dictionary<int, List<int>> _extendedMask;
     public IList<int> lookupTable;
     public IList<int> cloneLookupTable;
     
-    protected MyChromosomeBase(
+    protected SudokuChromosomeBase(
       SudokuBoard targetSudokuBoard,
       Dictionary<int, List<int>> extendedMask,
       int length)
@@ -22,6 +22,7 @@ namespace Sudoku.GeneticSharp
       this._targetSudokuBoard = targetSudokuBoard;
       this._extendedMask = extendedMask;
       this.lookupTable = (IList<int>)new List<int>(9) { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+      
       // Add 1 to the lookup table for each number that is already in the board
       for (int i = 0; i < this._targetSudokuBoard.Cells.Count; i++)
       {
