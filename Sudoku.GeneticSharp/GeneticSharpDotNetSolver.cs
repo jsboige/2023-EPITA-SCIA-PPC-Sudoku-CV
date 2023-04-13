@@ -1,55 +1,85 @@
-using GeneticSharp.Extensions;
+using GeneticSharp;
 using Sudoku.Shared;
 
 namespace Sudoku.GeneticSharp
 {
-    public class GeneticSharpDotNetSolver : ISudokuSolver
+	public class GeneticPermutedCellsSolver : ISudokuSolver
     {
-        private SudokuBoard GridToBoard(SudokuGrid s)
-        {
-            List<int> sdkList = new List<int>();
-            for (int i = 0; i < s.Cells.Length; i++)
-            {
-                for (int j = 0; j < s.Cells[0].Length; j++)
-                {
-                    sdkList.Add(s.Cells[i][j]);
-                }
-            }
-
-            return new SudokuBoard(sdkList);
-        }
-        
-        
-        private SudokuGrid BoardToGrid(SudokuBoard s)
-        {
-            SudokuGrid sdkGrid = new SudokuGrid();
-            for (int i = 0; i < 9; i++)
-            {
-                for (int j = 0; j < 9; j++)
-                {
-                    sdkGrid.Cells[i][j] = s.GetCell(i, j);
-                }
-            }
-            return sdkGrid;
-        }
-        
         public SudokuGrid Solve(SudokuGrid s)
         {
-            SudokuBoard sdkB = GridToBoard(s);
-            
-            SudokuChromosome chromosome = new SudokuChromosome(sdkB);
-            // var chromosome = new SudokuCellsChromosome(sdkB);
-            
-            Console.WriteLine("Enter population size:");
-            string populationSize = Console.ReadLine();
-            int.TryParse(populationSize, out int popSize);
-            Console.WriteLine("Enter number of generations:");
-            string genNb = Console.ReadLine();
-            int.TryParse(genNb, out int genNbInt);
-            
-            var sdkBoard = SudokuTestHelper.Eval(chromosome, sdkB, popSize, 0, genNbInt);
 
-            return BoardToGrid(sdkBoard);
+
+	        //Console.WriteLine("Enter population size:");
+	        //string populationSize = Console.ReadLine();
+	        //int.TryParse(populationSize, out int popSize);
+	        //Console.WriteLine("Enter number of generations:");
+	        //string genNb = Console.ReadLine();
+	        //int.TryParse(genNb, out int genNbInt);
+
+
+			var permutatedCellsChromosome = new SudokuPermutatedCellsChromosome(s);
+            
+            
+
+            var popSize = 400;
+
+			//var crossover = new PartiallyMappedCrossover();
+			//var crossover = new CycleCrossover();
+
+			var crossover = new OrderedCrossover();
+
+
+			//var mutation = new PartialShuffleMutation();
+			//var mutation = new DisplacementMutation();
+			var mutation = new TworsMutation();
+
+			var sdkBoard = SudokuTestHelper.Eval(permutatedCellsChromosome, crossover, mutation, s, popSize);
+
+            return sdkBoard;
+
         }
     }
+
+
+
+	public class GeneticPermutationsSolver : ISudokuSolver
+	{
+		public SudokuGrid Solve(SudokuGrid s)
+		{
+
+			var permutatedCellsChromosome = new SudokuPermutationsChromosome(s);
+
+			
+			var popSize = 400;
+			var crossover = new UniformCrossover();
+			var mutation = new UniformMutation();
+
+			var sdkBoard = SudokuTestHelper.Eval(permutatedCellsChromosome, crossover, mutation, s, popSize);
+
+			return sdkBoard;
+
+		}
+	}
+
+
+	public class GeneticCellsSolver : ISudokuSolver
+	{
+		public SudokuGrid Solve(SudokuGrid s)
+		{
+
+			var permutatedCellsChromosome = new SudokuPermutationsChromosome(s);
+
+		
+			var popSize = 400;
+			var crossover = new UniformCrossover();
+			var mutation = new UniformMutation();
+
+			var sdkBoard = SudokuTestHelper.Eval(permutatedCellsChromosome, crossover, mutation, s, popSize);
+
+			return sdkBoard;
+
+		}
+	}
+
+
 }
