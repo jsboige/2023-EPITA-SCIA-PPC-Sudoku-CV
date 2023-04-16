@@ -5,16 +5,14 @@ import statistics
 
 #instance = ((0,0,0,0,9,4,0,3,0),
 #          (0,0,0,5,1,0,0,0,7),
-#          (0,8,9,0,0,0,0,4,0),
+#         (0,8,9,0,0,0,0,4,0),
 #          (0,0,0,0,0,0,2,0,8),
 #          (0,6,0,2,0,1,0,5,0),
 #          (1,0,2,0,0,0,0,0,0),
 #          (0,7,0,0,0,0,5,2,0),
 #          (9,0,0,0,6,5,0,0,0),
 #          (0,4,0,9,7,0,0,0,0))
-r=instance
-
-sudoku = np.array([[int(i) for i in line] for line in instance])
+#r=instance
 
 TSudoku = tuple[tuple[int]] #Type of the sudoku
 
@@ -129,7 +127,8 @@ def ChooseNumberOfItterations(fixed_sudoku):
                 numberOfItterations += 1
     return numberOfItterations
 
-def solveSudoku(sudoku):
+def solveSudoku(inst):
+    sudoku = np.array([[int(i) for i in line] for line in inst])
     solutionFound = 0
     while (solutionFound == 0):
         decreaseFactor = 0.99
@@ -169,15 +168,18 @@ def solveSudoku(sudoku):
             if(CalculateNumberOfErrors(tmpSudoku)==0):
                 #PrintSudoku(tmpSudoku)
                 break
-    return(tmpSudoku)
+
+    res = tuple(tuple(int(x) for x in row) for row in tmpSudoku)
+    return res
 
 # solution = solveSudoku(sudoku)
 # print(CalculateNumberOfErrors(solution))
 # PrintSudoku(solution)
 
-if(solveSudoku(instance)):
+#if(solveSudoku(instance)):
 
-	r=instance
-else:
-	print ("Aucune solution trouvée")
+#	r=instance
+#else:
+#	print ("Aucune solution trouvée")
 
+r = solveSudoku(instance)
