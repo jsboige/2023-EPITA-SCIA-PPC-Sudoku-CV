@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Sudoku.Backtracking {
+namespace Sudoku.SimulatedAnnealing {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Sudoku.Backtracking {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Sudoku.Backtracking.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Sudoku.SimulatedAnnealing.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,27 +61,11 @@ namespace Sudoku.Backtracking {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à from timeit import default_timer
-        ///
-        ///#instance = ((0,0,0,0,9,4,0,3,0),
-        ///#           (0,0,0,5,1,0,0,0,7),
-        ///#           (0,8,9,0,0,0,0,4,0),
-        ///#           (0,0,0,0,0,0,2,0,8),
-        ///#           (0,6,0,2,0,1,0,5,0),
-        ///#           (1,0,2,0,0,0,0,0,0),
-        ///#           (0,7,0,0,0,0,5,2,0),
-        ///#           (9,0,0,0,6,5,0,0,0),
-        ///#           (0,4,0,9,7,0,0,0,0))
-        ///
-        ///def findNextCellToFill(grid, i, j):
-        ///        for x in range(i,9):
-        ///                for y in range(j,9):
-        ///                        if grid[x][y] == 0:
-        ///                  [le reste de la chaîne a été tronqué]&quot;;.
+        ///   Recherche une chaîne localisée semblable à .
         /// </summary>
-        internal static string Backtracking_py {
+        internal static string SimulatedAnnealing_py {
             get {
-                return ResourceManager.GetString("Backtracking.py", resourceCulture);
+                return ResourceManager.GetString("SimulatedAnnealing.py", resourceCulture);
             }
         }
     }
