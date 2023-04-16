@@ -49,14 +49,11 @@ namespace Sudoku.GeneticSharp
         {
 
 	        var fitnessThreshold = 0;
-            int stableGenerationNb = 30;
+            int stableGenerationNb = 50;
             
-
             SudokuFitness fitness = new SudokuFitness(sudokuBoard);
             EliteSelection selection = new EliteSelection();
             
-            //CycleCrossover crossover = new CycleCrossover();
-            //TworsMutation mutation = new TworsMutation();
             var termination = new OrTermination(new ITermination[]
             {
 	            new FitnessThresholdTermination(fitnessThreshold),
