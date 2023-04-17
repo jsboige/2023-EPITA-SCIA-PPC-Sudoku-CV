@@ -1,9 +1,10 @@
 ﻿using Python.Runtime;
 using Sudoku.Shared;
+using System.Runtime.InteropServices;
 
 namespace Sudoku.ConvolutionNN;
 
-public class  ConvolutionNNEmptyDotNetSolver : PythonSolverBase
+public class  ConvolutionNNDotNetSolver : PythonSolverBase
 {
     public override Shared.SudokuGrid Solve(Shared.SudokuGrid s)
     {
@@ -35,6 +36,10 @@ public class  ConvolutionNNEmptyDotNetSolver : PythonSolverBase
         InstallPipModule("numpy");
         InstallPipModule("pandas");
         InstallPipModule("scikit-learn");
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            InstallPipModule("tensorflow-macos");
+        else
+            InstallPipModule("tensorflow");
         base.InitializePythonComponents();
     }
 }
