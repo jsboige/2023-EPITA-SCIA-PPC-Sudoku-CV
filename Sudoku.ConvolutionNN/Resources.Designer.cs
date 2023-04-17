@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Sudoku.Backtracking {
+namespace Sudoku.ConvolutionNN {
     using System;
     
     
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -28,7 +28,7 @@ namespace Sudoku.Backtracking {
         internal static System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.Equals(null, resourceMan)) {
-                    System.Resources.ResourceManager temp = new System.Resources.ResourceManager("Sudoku.Backtracking.Resources", typeof(Resources).Assembly);
+                    System.Resources.ResourceManager temp = new System.Resources.ResourceManager("Sudoku.ConvolutionNN.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -45,9 +45,9 @@ namespace Sudoku.Backtracking {
             }
         }
         
-        internal static string Backtracking_py {
+        internal static string CNN_py {
             get {
-                return ResourceManager.GetString("Backtracking.py", resourceCulture);
+                return ResourceManager.GetString("CNN.py", resourceCulture);
             }
         }
     }

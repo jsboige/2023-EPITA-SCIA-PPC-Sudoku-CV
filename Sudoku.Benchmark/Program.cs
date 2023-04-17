@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
@@ -36,9 +36,9 @@ namespace Sudoku.Benchmark
 
 
                 // Environnement dédié Anaconda
-                //MacInstaller.InstallPath = "/Users/bryanchea/opt/anaconda3/envs";
-                //MacInstaller.PythonDirectoryName = "sudoku";
-                //MacInstaller.LibFileName = "libpython3.8.dylib";
+                MacInstaller.InstallPath = "/Users/francois.soulier/miniconda/envs";
+                MacInstaller.PythonDirectoryName = "/Users/francois.soulier/miniconda/envs/SCIA/bin";
+                MacInstaller.LibFileName = "/Users/francois.soulier/miniconda/envs/SCIA/lib/libpython3.10.dylib";
 
                 //MacInstaller.InstallPath = "/Users/jesse/opt/anaconda3/envs";
                 // MacInstaller.PythonDirectoryName = "Sudoku";
