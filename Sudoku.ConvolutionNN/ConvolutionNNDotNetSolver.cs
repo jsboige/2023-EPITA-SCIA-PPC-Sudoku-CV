@@ -23,7 +23,7 @@ public class  ConvolutionNNDotNetSolver : PythonSolverBase
             try
             {
                 string modelPath = Path.Combine(GetResourcesPath(), "sudoku.model");
-                Console.WriteLine(modelPath);
+                Console.WriteLine($"model Path:\n{modelPath}");
                 scope.Set("model_path", modelPath);
             }
             catch (ApplicationException exception) 
@@ -60,15 +60,16 @@ public class  ConvolutionNNDotNetSolver : PythonSolverBase
     
     protected string GetResourcesPath()
     {
-        var currentDirectory = new DirectoryInfo(Environment.CurrentDirectory);
-        var regex = new System.Text.RegularExpressions.Regex("(.*)(2023-EPITA-SCIA-PPC-Sudoku-CV)(.*)");
-        var match = regex.Match(currentDirectory.ToString());
-        if (match.Success)
-        {
-            var path = match.Groups[1].Value;
-            return Path.Combine(path, "2023-EPITA-SCIA-PPC-Sudoku-CV", "Sudoku.ConvolutionNN", "Resources");
-        }
+        //var currentDirectory = new DirectoryInfo(Environment.CurrentDirectory);
+        //var regex = new System.Text.RegularExpressions.Regex("(.*)(2023-EPITA-SCIA-PPC-Sudoku-CV)(.*)");
+        //var match = regex.Match(currentDirectory.ToString());
+        //if (match.Success)
+        //{
+        //    var path = match.Groups[1].Value;
+        //    return Path.Combine(path, "2023-EPITA-SCIA-PPC-Sudoku-CV", "Sudoku.ConvolutionNN", "Resources");
+        //}
 
-        throw new ApplicationException("Couldn't find resources directory");
+        //throw new ApplicationException("Couldn't find resources directory");
+        return Path.Combine(Environment.CurrentDirectory, @".\Resources\");
     }
 }
