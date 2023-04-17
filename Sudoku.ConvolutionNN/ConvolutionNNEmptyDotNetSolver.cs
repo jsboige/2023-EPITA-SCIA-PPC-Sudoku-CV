@@ -32,7 +32,9 @@ public class  ConvolutionNNEmptyDotNetSolver : PythonSolverBase
     protected override void InitializePythonComponents()
     {
         //declare your pip packages here
-        // InstallPipModule("numpy");
+        InstallPipModule("numpy");
+        InstallPipModule("pandas");
+        InstallPipModule("scikit-learn");
         base.InitializePythonComponents();
     }
 }
