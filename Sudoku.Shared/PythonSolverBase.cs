@@ -95,7 +95,7 @@ namespace Sudoku.Shared
             // Console.WriteLine($"PythonPath={Environment.GetEnvironmentVariable("PythonPath", EnvironmentVariableTarget.Process)}");
 
 
-            var aliasPath = $"/usr/local/lib/{MacInstaller.LibFileName}";
+            var aliasPath = $"{MacInstaller.LibFileName}";
             if (!File.Exists(aliasPath))
             {
                 var libPath = $"{localInstallPath}/lib/{MacInstaller.LibFileName}";
