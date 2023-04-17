@@ -3,12 +3,10 @@ import tensorflow as tf
 from tensorflow import keras
 import numpy as np
 import pandas as pd
-from sklearn.model_selection import train_test_split
 
 from timeit import default_timer
 
-model = keras.models.load_model('/Users/francois.soulier/SCIA/Programmation_par_contraintes/Sudoku-Solver/model/sudoku.model')
-# model = tf.load_model('./sudoku.model')
+model = keras.models.load_model(model_path)
 
 def norm(a):    
     return (a / 9) - .5
@@ -55,7 +53,5 @@ def solve_sudoku(game):
     return game.tolist()
 
 game = solve_sudoku(instance)
-
-# grid = modify_sudoku(instance)
 
 r=game

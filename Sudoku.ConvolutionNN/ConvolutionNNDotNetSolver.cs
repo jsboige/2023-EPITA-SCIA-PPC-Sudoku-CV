@@ -1,6 +1,10 @@
 ﻿using Python.Runtime;
 using Sudoku.Shared;
 using System.Runtime.InteropServices;
+using System;
+using System.IO;
+using System.Reflection;
+using Microsoft.VisualBasic;
 
 namespace Sudoku.ConvolutionNN;
 
@@ -15,6 +19,17 @@ public class  ConvolutionNNDotNetSolver : PythonSolverBase
 
             // create a Python variable "instance"
             scope.Set("instance", pyCells);
+
+            try
+            {
+                string modelPath = Path.Combine(GetResourcesPath(), "sudoku.model");
+                Console.WriteLine(modelPath);
+                scope.Set("model_path", modelPath);
+            }
+            catch (ApplicationException exception) 
+            {
+                Console.WriteLine(exception.Message);
+            }
 
             // run the Python script
             string code = Resources.CNN_py;
@@ -41,5 +56,19 @@ public class  ConvolutionNNDotNetSolver : PythonSolverBase
         else
             InstallPipModule("tensorflow");
         base.InitializePythonComponents();
+    }
+    
+    protected string GetResourcesPath()
+    {
+        var currentDirectory = new DirectoryInfo(Environment.CurrentDirectory);
+        var regex = new System.Text.RegularExpressions.Regex("(.*)(2023-EPITA-SCIA-PPC-Sudoku-CV)(.*)");
+        var match = regex.Match(currentDirectory.ToString());
+        if (match.Success)
+        {
+            var path = match.Groups[1].Value;
+            return Path.Combine(path, "2023-EPITA-SCIA-PPC-Sudoku-CV", "Sudoku.ConvolutionNN", "Resources");
+        }
+
+        throw new ApplicationException("Couldn't find resources directory");
     }
 }
