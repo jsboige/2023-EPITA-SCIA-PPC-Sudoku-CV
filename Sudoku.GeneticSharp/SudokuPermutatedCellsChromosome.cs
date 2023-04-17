@@ -61,6 +61,11 @@ namespace Sudoku.GeneticSharp
 	        return (IChromosome)new SudokuPermutatedCellsChromosome(this.TargetSudokuGrid, this.ExtendedMask, baseLookupTable);
         }
 
+        public override bool UsesPermutations()
+        {
+	        return true;
+        }
+
         public override IList<SudokuGrid> GetSudokus()
         {
 	        var genes = GetGenes();

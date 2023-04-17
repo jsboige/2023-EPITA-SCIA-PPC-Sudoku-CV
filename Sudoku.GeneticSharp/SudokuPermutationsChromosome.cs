@@ -63,6 +63,11 @@ public class SudokuPermutationsChromosome : SudokuChromosomeBase, ISudokuChromos
 		return toReturn;
 	}
 
+	public override bool UsesPermutations()
+	{
+		return true;
+	}
+
 	/// <summary>
 	/// builds a single Sudoku from the given row permutation genes
 	/// </summary>

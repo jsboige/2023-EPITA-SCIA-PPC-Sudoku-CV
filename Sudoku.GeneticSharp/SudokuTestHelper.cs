@@ -49,7 +49,7 @@ namespace Sudoku.GeneticSharp
         {
 
 	        var fitnessThreshold = 0;
-            int stableGenerationNb = 50;
+            int stableGenerationNb = 20;
             
             SudokuFitness fitness = new SudokuFitness(sudokuBoard);
             EliteSelection selection = new EliteSelection();
@@ -59,7 +59,7 @@ namespace Sudoku.GeneticSharp
 	            new FitnessThresholdTermination(fitnessThreshold),
 	            new FitnessStagnationTermination(stableGenerationNb),
 			});
-
+            
 
 			var nbErrors = 0;
 			SudokuGrid bestSudoku;
@@ -73,13 +73,16 @@ namespace Sudoku.GeneticSharp
 	            {
 		            Termination = termination
 	            };
+                //Ajout d'opérateurs de parallélisation
+	            ga.OperatorsStrategy = new TplOperatorsStrategy();
+	            ga.TaskExecutor = new TplTaskExecutor();
                 ga.GenerationRan+=(sender, args) => 
                 {
 					var bestIndividual = (ISudokuChromosome)ga.Population.BestChromosome;
 					var solutions = bestIndividual.GetSudokus();
 					bestSudoku = solutions[0];
 					nbErrors = bestSudoku.NbErrors(sudokuBoard);
-                    Console.WriteLine($"Generation {ga.GenerationsNumber}, nbErrors {nbErrors} Elapsed {sw.Elapsed - lastTime}");
+                    Console.WriteLine($"Generation {ga.GenerationsNumber}, population {ga.Population.CurrentGeneration.Chromosomes.Count}, nbErrors {nbErrors} Elapsed {sw.Elapsed - lastTime} Elapsed since initial Gen {sw.Elapsed}");
                     lastTime = sw.Elapsed;
 				};
 

@@ -113,6 +113,11 @@ namespace Sudoku.GeneticSharp
 		        GeneToCellLookup, baseLookupTable);
         }
 
+        public override bool UsesPermutations()
+        {
+	        return false;
+        }
+
         public override IList<SudokuGrid> GetSudokus()
         {
             var toReturn = new List<SudokuGrid>();

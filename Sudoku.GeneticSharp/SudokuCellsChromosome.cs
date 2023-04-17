@@ -55,6 +55,11 @@ public class SudokuCellsChromosome : SudokuChromosomeBase, ISudokuChromosome
 		return new SudokuCellsChromosome(TargetSudokuGrid, ExtendedMask);
 	}
 
+	public override bool UsesPermutations()
+	{
+		return false;
+	}
+
 	/// <summary>
 	/// Builds a single Sudoku from the 81 genes
 	/// </summary>

@@ -14,6 +14,8 @@ namespace Sudoku.GeneticSharp
 	public abstract class SudokuChromosomeBase : ChromosomeBase, ISudokuChromosome //
 	{
 
+		public abstract bool UsesPermutations();
+
 		/// <summary>
 		/// The target sudoku board to solve
 		/// </summary>
@@ -77,26 +79,30 @@ namespace Sudoku.GeneticSharp
 		protected override void CreateGenes()
 		{
 			var rnd = RandomizationProvider.Current;
-			
-			for (int index = 0; index < 9; ++index)
+
+			if (UsesPermutations())
 			{
-				IList<IList<int>> permutations = TargetRowsPermutations[index];
-				IList<IList<int>> rowPermutations = _RowsPermutations[index];
-		
-				int[] permTargetIdxs = permutations.Where((perm) => CheckPermutation(perm, index)).Select((perm, idx) => idx).ToArray();
-				int permIdx;
-				if (permTargetIdxs.Length != 0)			// if at least one permutation respect the mask
+				for (int index = 0; index < 9; ++index)
 				{
-					permIdx = rowPermutations.IndexOf(permutations[permTargetIdxs[rnd.GetInt(0, permTargetIdxs.Length)]]);
+					IList<IList<int>> permutations = TargetRowsPermutations[index];
+					IList<IList<int>> rowPermutations = _RowsPermutations[index];
+
+					int[] permTargetIdxs = permutations.Where((perm) => CheckPermutation(perm, index)).Select((perm, idx) => idx).ToArray();
+					int permIdx;
+					if (permTargetIdxs.Length != 0)         // if at least one permutation respect the mask
+					{
+						permIdx = rowPermutations.IndexOf(permutations[permTargetIdxs[rnd.GetInt(0, permTargetIdxs.Length)]]);
+					}
+					else                                    // if no permutation respect the mask
+					{
+						permIdx = rnd.GetInt(0, rowPermutations.Count);
+					}
+
+					_permutationsGenes.Add(permIdx);
+					_permutations.Add(rowPermutations[permIdx]);
 				}
-				else									// if no permutation respect the mask
-				{
-					permIdx = rnd.GetInt(0, rowPermutations.Count);
-				}
-				
-				_permutationsGenes.Add(permIdx);
-				_permutations.Add(rowPermutations[permIdx]);
 			}
+			
 
 			for (int index = 0; index < this.Length; ++index)
 				this.ReplaceGene(index, this.GenerateGene(index));
