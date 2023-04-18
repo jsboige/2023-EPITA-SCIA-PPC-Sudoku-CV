@@ -17,5 +17,6 @@
     <ProjectReference Include="..\Sudoku.Shared\Sudoku.Shared.csproj" />
     <ProjectReference Include="..\LinqToZ3\LinqToZ3.csproj" />
     <ProjectReference Include="..\Sudoku.z3\Sudoku.z3.csproj"/>
+    <ProjectReference Include="..\Sudoku.ConvolutionNN\Sudoku.ConvolutionNN.csproj" />
   </ItemGroup>
 </Project>
