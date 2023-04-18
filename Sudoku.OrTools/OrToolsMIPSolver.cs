@@ -1,8 +1,6 @@
 ﻿using Sudoku.Shared;
 
 using Google.OrTools.LinearSolver;
-using System;
-using Google.OrTools.ConstraintSolver;
 using Solver = Google.OrTools.LinearSolver.Solver;
 
 
@@ -11,14 +9,14 @@ namespace Sudoku.OrTools
 
     public class OrToolsMIPSolver : ISudokuSolver
     {
-
-        private Solver solver = Solver.CreateSolver("CBC_MIXED_INTEGER_PROGRAMMING");
-
         private const int GridSize = 9;
         private const int CellSize = 3;
 
         public SudokuGrid Solve(SudokuGrid s)
         {
+            Solver solver = Solver.CreateSolver("CBC_MIXED_INTEGER_PROGRAMMING");
+            
+            
             // Step 2: Create variables.
             Variable[,,] x = new Variable[GridSize, GridSize, GridSize];
             for (int i = 0; i < GridSize; i++)
