@@ -8,6 +8,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sudoku.Demo\Sudoku.Demo.csproj" />
+    <ProjectReference Include="..\Sudoku.DLXLib\Sudoku.DLXLib.csproj" />
     <ProjectReference Include="..\Sudoku.Shared\Sudoku.Shared.csproj" />
   </ItemGroup>
   <ItemGroup>

@@ -16,7 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Puzzles", "Puzzles", "{5351
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sudoku.Demo", "Sudoku.Demo\Sudoku.Demo.csproj", "{AD78958C-0B81-436B-BB99-9485B7045C98}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku.DLXlib", "Sudoku.DLXlib\Sudoku.DLXlib.csproj", "{911AFE5D-6299-48F6-9F84-B388121A373A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku.DLXLib", "Sudoku.DLXLib\Sudoku.DLXLib.csproj", "{BC91E1B9-2417-478A-BBAC-E51BB31F4630}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,10 +36,10 @@ Global
 		{AD78958C-0B81-436B-BB99-9485B7045C98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD78958C-0B81-436B-BB99-9485B7045C98}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD78958C-0B81-436B-BB99-9485B7045C98}.Release|Any CPU.Build.0 = Release|Any CPU
-		{911AFE5D-6299-48F6-9F84-B388121A373A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{911AFE5D-6299-48F6-9F84-B388121A373A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{911AFE5D-6299-48F6-9F84-B388121A373A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{911AFE5D-6299-48F6-9F84-B388121A373A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC91E1B9-2417-478A-BBAC-E51BB31F4630}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC91E1B9-2417-478A-BBAC-E51BB31F4630}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC91E1B9-2417-478A-BBAC-E51BB31F4630}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC91E1B9-2417-478A-BBAC-E51BB31F4630}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
