@@ -5,11 +5,11 @@ namespace Sudoku.OrTools
 {
     public class OrToolsCpSolver : ISudokuSolver
     {
-        private readonly Solver _solver = new Solver("CpSimple");
-        
         private const int GridSize = 9;
         public SudokuGrid Solve(SudokuGrid s)
         {
+            Solver _solver = new Solver("CpSimple");
+            
             // Create all variables and constants of the sudoku grid
 
             IntVar[,] gridVars = new IntVar[GridSize, GridSize];
