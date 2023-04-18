@@ -1,21 +1,17 @@
 package fr.epita;
 
-import java.util.ArrayList;
-
 import org.chocosolver.solver.Model;
 import org.chocosolver.solver.Solution;
 import org.chocosolver.solver.search.strategy.Search;
 import org.chocosolver.solver.variables.IntVar;
-import org.chocosolver.util.tools.ArrayUtils;
 
-import static org.chocosolver.solver.search.strategy.Search.minDomLBSearch;
 import static org.chocosolver.util.tools.ArrayUtils.append;
 
 
-public class SudokuSolver extends Object {
+public class SudokuSolver {
 
-    protected Model model;
     private final int n = 9;
+    protected Model model;
     IntVar[][] rows, cols, carres;
     int[][] grid;
 
@@ -57,13 +53,34 @@ public class SudokuSolver extends Object {
         }
     }
 
-    private void configureSearch() {
-        model.getSolver().setSearch(minDomLBSearch(append(rows)));
-    }
-
-    public void solve() {
+    public void solve(int method) {
         this.buildModel();
-        this.configureSearch();
+        switch (method){
+            case 0:
+                model.getSolver().setSearch(Search.inputOrderLBSearch(append(rows)));
+                break;
+            case 1:
+                model.getSolver().setSearch(Search.domOverWDegSearch(append(rows)));
+                break;
+            case 2:
+                model.getSolver().setSearch(Search.minDomLBSearch(append(rows)));
+                break;
+            case 3:
+                model.getSolver().setSearch(Search.randomSearch(append(rows), 42));
+                break;
+            case 4:
+                model.getSolver().setSearch(Search.conflictHistorySearch(append(rows)));
+                break;
+            case 5:
+                model.getSolver().setSearch(Search.activityBasedSearch(append(rows)));
+                break;
+            case 6:
+                model.getSolver().setSearch(Search.failureRateBasedSearch(append(rows)));
+                break;
+            default:
+                model.getSolver().setSearch(Search.defaultSearch(model));
+                break;
+        }
         Solution solution = model.getSolver().findSolution();
         model.getSolver().solve();
 
@@ -73,5 +90,4 @@ public class SudokuSolver extends Object {
             }
         }
     }
-
 }
