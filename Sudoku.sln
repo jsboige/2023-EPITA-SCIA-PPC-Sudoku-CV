@@ -34,6 +34,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Z3.LinqBinding", "Z3.LinqBi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sudoku.GeneticSharp", "Sudoku.GeneticSharp\Sudoku.GeneticSharp.csproj", "{22DDB3A3-6000-4964-A974-D640AB72E019}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku.ConvolutionNN", "Sudoku.ConvolutionNN\Sudoku.ConvolutionNN.csproj", "{71B34C6A-0D7D-4741-B249-BEDCA07C6BA6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -88,6 +90,10 @@ Global
 		{22DDB3A3-6000-4964-A974-D640AB72E019}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22DDB3A3-6000-4964-A974-D640AB72E019}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22DDB3A3-6000-4964-A974-D640AB72E019}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71B34C6A-0D7D-4741-B249-BEDCA07C6BA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71B34C6A-0D7D-4741-B249-BEDCA07C6BA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71B34C6A-0D7D-4741-B249-BEDCA07C6BA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71B34C6A-0D7D-4741-B249-BEDCA07C6BA6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
