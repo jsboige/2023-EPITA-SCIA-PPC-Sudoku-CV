@@ -6,13 +6,14 @@ namespace Sudoku.ParticleSwarmOptimization
 {
     public class Worker : Organism
     {
-        public override void SearchBetterSolution()
+        public override void SearchBetterSolution(uint max_age)
         {
-            // FIXME: If is 'worker' organism then: Evolve or Mutate
+            // If is 'worker' organism then: Evolve or Mutate
             var new_solution = solution.CloneSudoku();
             
             Random r = new Random();
 
+            // Swap 2 random values in a row
             bool swap = false;
             do
             {
@@ -38,6 +39,7 @@ namespace Sudoku.ParticleSwarmOptimization
                 swap = true;
             } while (!swap);
 
+            // Calculate new error and replace solution if better
             var new_error = new_solution.NbErrors(PSOSolver.original);
 
             if (new_error < error)
@@ -48,8 +50,9 @@ namespace Sudoku.ParticleSwarmOptimization
             }
             else
             {
+                // if too old, restart from a random solution
                 age++;
-                if (age > 1000)
+                if (age > max_age)
                 {
                     solution = SudokuUtils.RandomSolution();
                     error = solution.NbErrors(PSOSolver.original);

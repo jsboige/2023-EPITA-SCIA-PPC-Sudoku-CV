@@ -28,6 +28,6 @@ namespace Sudoku.ParticleSwarmOptimization
             return Error.CompareTo(((Organism) other).Error);
         }
 
-        public abstract void SearchBetterSolution();
+        public abstract void SearchBetterSolution(uint max_age);
     }
 }
