@@ -39,7 +39,7 @@ namespace Sudoku.ParticleSwarmOptimization
                 bestOrganism = bestExplorer;
         }
 
-        public SudokuGrid Solve(uint max_epoch = 100000, uint max_age = 1000)
+        public SudokuGrid Solve(uint max_epoch = 1000, uint max_age = 1000)
         {
             // Start the search for a solution
             for (int i = 0; i < max_epoch; i++)
