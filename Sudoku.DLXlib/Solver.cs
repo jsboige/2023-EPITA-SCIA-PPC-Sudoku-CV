@@ -63,56 +63,6 @@ namespace Sudoku.DLXlib
             return dlxMatrix;
         }
 
-        /*
-
-        private int[,] Generate(SudokuGrid inputSudoku)
-        {
-            int[,] dlxMatrix = new int[729, 324];
-
-            for (int row = 0; row < 9; row++)
-            {
-                for (int col = 0; col < 9; col++)
-                {
-                    int value = inputSudoku.Cells[row][col];
-
-                    if (value == 0)
-                    {
-                        for (int num = 1; num <= 9; num++)
-                        {
-                            AddAssignmentToDLXMatrix(dlxMatrix, row, col, num);
-                        }
-                    }
-                    else
-                    {
-                        AddAssignmentToDLXMatrix(dlxMatrix, row, col, value);
-                    }
-                }
-            }
-
-            return dlxMatrix;
-        }
-
-        private static void AddAssignmentToDLXMatrix(int[,] dlxMatrix, int row, int col, int num)
-        {
-            int rowIndex = row * 81 + col * 9 + num - 1;
-
-            // Cell constraint
-            dlxMatrix[rowIndex, row * 9 + col] = 1;
-
-            // Row constraint
-            dlxMatrix[rowIndex, 81 + row * 9 + num - 1] = 1;
-
-            // Column constraint
-            dlxMatrix[rowIndex, 162 + col * 9 + num - 1] = 1;
-
-            // Box constraint
-            int boxRow = row / 3;
-            int boxCol = col / 3;
-            int boxIndex = boxRow * 3 + boxCol;
-            dlxMatrix[rowIndex, 243 + boxIndex * 9 + num - 1] = 1;
-        }
-        */
-
         private SudokuGrid ConvertToSudokuGrid(Solution solution, int[,] inputMatrix)
         {
             var sudokuGrid = new SudokuGrid(); //new int[9][];
