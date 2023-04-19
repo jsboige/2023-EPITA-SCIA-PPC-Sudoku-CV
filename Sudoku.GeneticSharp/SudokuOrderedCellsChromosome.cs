@@ -61,7 +61,7 @@ namespace Sudoku.GeneticSharp
         public SudokuOrderedCellsChromosome(
 	        SudokuGrid? targetSudokuBoard,
             Dictionary<(int x, int y), List<int>> extendedMask)
-            : base(targetSudokuBoard, extendedMask, targetSudokuBoard?.NbEmptyCells?? 81)
+            : base(targetSudokuBoard, extendedMask, targetSudokuBoard?.NbEmptyCells()?? 81)
         {
         }
 
@@ -70,7 +70,7 @@ namespace Sudoku.GeneticSharp
 	        Dictionary<(int x, int y), List<int>> extendedMask,
 	        IList<(int row, int col)> objGeneToCellLookup,
 	        List<int> objBaseLookupTable)
-	        : base(targetSudokuBoard, extendedMask, targetSudokuBoard?.NbEmptyCells ?? 81)
+	        : base(targetSudokuBoard, extendedMask, targetSudokuBoard?.NbEmptyCells() ?? 81)
         {
             this._geneToCellLookup = objGeneToCellLookup;
             this.baseLookupTable = objBaseLookupTable;
