@@ -20,8 +20,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku.Demo", "Sudoku.Demo\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku.Norvig", "Sudoku.Norvig\Sudoku.Norvig.csproj", "{5A517923-A3EA-4CC5-A128-C7EC9F159B79}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NorvigArray", "NorvigArray\NorvigArray.csproj", "{D59DF05A-5486-4FF4-B637-682A5568F345}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,10 +46,6 @@ Global
 		{5A517923-A3EA-4CC5-A128-C7EC9F159B79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A517923-A3EA-4CC5-A128-C7EC9F159B79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A517923-A3EA-4CC5-A128-C7EC9F159B79}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D59DF05A-5486-4FF4-B637-682A5568F345}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D59DF05A-5486-4FF4-B637-682A5568F345}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D59DF05A-5486-4FF4-B637-682A5568F345}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D59DF05A-5486-4FF4-B637-682A5568F345}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
