@@ -709,6 +709,9 @@ namespace Z3.LinqBinding
 				        case TypeCode.String:
 					        numVal = numValExpr.String;
 					        break;
+                        case TypeCode.Byte:
+                            numVal = (byte)((IntNum)numValExpr).Int;
+                            break;
 				        case TypeCode.Int16:
 				        case TypeCode.Int32:
 					        numVal = ((IntNum)numValExpr).Int;
@@ -856,6 +859,7 @@ namespace Z3.LinqBinding
         {
             switch (Type.GetTypeCode(val.GetType()))
             {
+                case TypeCode.Byte:
                 case TypeCode.Int16:
                 case TypeCode.Int32:
                 case TypeCode.Int64:
