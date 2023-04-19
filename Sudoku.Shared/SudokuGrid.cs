@@ -374,7 +374,7 @@ namespace Sudoku.Shared
             return NbErrors(originalPuzzle) == 0;
         }
 
-        public int NbEmptyCells => Cells.SelectMany(r => r).Count(c => c == 0);
+        public int NbEmptyCells() => Cells.SelectMany(r => r).Count(c => c == 0);
 
     }
 }
