@@ -81,6 +81,7 @@ def ChooseNewState (currentSudoku, fixedSudoku, listOfBlocks, sigma):
     proposal = ProposedState(currentSudoku, fixedSudoku, listOfBlocks)
     newSudoku = proposal[0]
     boxesToCheck = proposal[1]
+    print(boxesToCheck)
     currentCost = CalculateNumberOfErrorsRowColumn(boxesToCheck[0][0], boxesToCheck[0][1], currentSudoku) + CalculateNumberOfErrorsRowColumn(boxesToCheck[1][0], boxesToCheck[1][1], currentSudoku)
     newCost = CalculateNumberOfErrorsRowColumn(boxesToCheck[0][0], boxesToCheck[0][1], newSudoku) + CalculateNumberOfErrorsRowColumn(boxesToCheck[1][0], boxesToCheck[1][1], newSudoku)
     # currentCost = CalculateNumberOfErrors(currentSudoku)
