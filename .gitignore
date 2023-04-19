@@ -361,6 +361,3 @@ MigrationBackup/
 .history/
 .localhistory/
 
-# Datasets
-solver/*.zip
-solver/*.csv

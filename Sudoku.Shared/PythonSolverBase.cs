@@ -50,7 +50,7 @@ namespace Sudoku.Shared
         }
 		public static void InstallPipModule(string moduleName, string version = "", bool force = false)
 		{
-			Task task = Task.Run( () => InstallPipModuleAsync(moduleName, version, force));
+			Task task = Task.Run(() => InstallPipModuleAsync(moduleName, version, force));
 			task.Wait();
 
 		}
@@ -95,7 +95,7 @@ namespace Sudoku.Shared
             // Console.WriteLine($"PythonPath={Environment.GetEnvironmentVariable("PythonPath", EnvironmentVariableTarget.Process)}");
 
 
-            var aliasPath = $"{MacInstaller.LibFileName}";
+            var aliasPath = $"/usr/local/lib/{MacInstaller.LibFileName}";
             if (!File.Exists(aliasPath))
             {
                 var libPath = $"{localInstallPath}/lib/{MacInstaller.LibFileName}";
@@ -123,29 +123,7 @@ namespace Sudoku.Shared
         private static async Task InstallEmbedded()
         {
 
-            // // install in local directory. if you don't set it will install in local app data of your user account
-            //Python.Deployment.Installer.InstallPath = Path.GetFullPath(".");
-            //
-
-
-            Runtime.PythonDLL = "python37.dll";
-            Python.Deployment.Installer.Source = new Installer.DownloadInstallationSource()
-            {
-                DownloadUrl = @"https://www.python.org/ftp/python/3.7.3/python-3.7.3-embed-amd64.zip",
-            };
-
-            //Runtime.PythonDLL = "python38.dll";
-            //Python.Deployment.Installer.Source = new Installer.DownloadInstallationSource()
-            //{
-            //    DownloadUrl = @"https://www.python.org/ftp/python/3.8.9/python-3.8.9-embed-amd64.zip",
-            //};
-
-            //Runtime.PythonDLL = "python39.dll";
-            //Python.Deployment.Installer.Source = new Installer.DownloadInstallationSource()
-            //{
-            //    DownloadUrl = @"https://www.python.org/ftp/python/3.9.9/python-3.9.9-embed-amd64.zip",
-            //};
-            //Runtime.PythonDLL = "python37.dll";
+			//Runtime.PythonDLL = "python37.dll";
 
             // // set the download source
             // Python.Deployment.Installer.Source = new Installer.DownloadInstallationSource()
@@ -154,34 +132,29 @@ namespace Sudoku.Shared
             // };
             //
             // // install in local directory. if you don't set it will install in local app data of your user account
-            //Python.Deployment.Installer.InstallPath = Path.GetFullPath(".");
+             //Python.Deployment.Installer.InstallPath = Path.GetFullPath(".");
             //
             // see what the installer is doing
 
-            //Runtime.PythonDLL = "python310.dll";
-            //Python.Deployment.Installer.Source = new Installer.DownloadInstallationSource()
-            //{
-            //	DownloadUrl = @"https://www.python.org/ftp/python/3.10.8/python-3.10.8-embed-amd64.zip",
-            //};
+			Runtime.PythonDLL = "python38.dll";
+			Python.Deployment.Installer.Source = new Installer.DownloadInstallationSource()
+            {
+                DownloadUrl = @"https://www.python.org/ftp/python/3.8.9/python-3.8.9-embed-amd64.zip",
+            };
 
 
-            //Runtime.PythonDLL = "python311.dll";
-            //Python.Deployment.Installer.Source = new Installer.DownloadInstallationSource()
-            //{
-            //    DownloadUrl = @"https://www.python.org/ftp/python/3.11.2/python-3.11.2-embed-amd64.zip",
-            //};
 
-
-            // see what the installer is doing
             Installer.LogMessage += Console.WriteLine;
+
             //
             // install from the given source
 			await Python.Deployment.Installer.SetupPython();
 
 			await Installer.TryInstallPip();
 
-			Python.Deployment.Installer.SetupPython().Wait();
-			Installer.TryInstallPip();
+
+			//Python.Deployment.Installer.SetupPython().Wait();
+			//Installer.TryInstallPip();
 
         }
 
@@ -191,8 +164,8 @@ namespace Sudoku.Shared
 
 
             PythonEngine.Initialize();
-            //dynamic sys = PythonEngine.ImportModule("sys");
-            //Console.WriteLine("Python version: " + sys.version);
+            // dynamic sys = PythonEngine.ImportModule("sys");
+            // Console.WriteLine("Python version: " + sys.version);
         }
 
 
@@ -201,8 +174,10 @@ namespace Sudoku.Shared
 
         protected void AddNumpyConverterScript(PyModule scope)
         {
+
 			string numpyConverterCode = Resources.numpy_converter_py;
 			scope.Exec(numpyConverterCode);
+			
 		}
 			
 
