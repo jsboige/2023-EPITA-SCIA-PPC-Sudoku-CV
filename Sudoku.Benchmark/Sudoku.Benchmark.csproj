@@ -13,6 +13,9 @@
     <ProjectReference Include="..\Sudoku.ParticleSwarmOptimization\Sudoku.ParticleSwarmOptimization.csproj" />
     <ProjectReference Include="..\Sudoku.ColorGraph\Sudoku.ColorGraph.csproj" />
     <ProjectReference Include="..\Sudoku.Demo\Sudoku.Demo.csproj" />
+    <ProjectReference Include="..\Sudoku.Norvig\Sudoku.Norvig.csproj" />
+    <ProjectReference Include="..\Sudoku.OrTools\Sudoku.OrTools.csproj" />
+    <ProjectReference Include="..\Sudoku.GeneticSharp\Sudoku.GeneticSharp.csproj" />
     <ProjectReference Include="..\Sudoku.OrTools\Sudoku.OrTools.csproj" />
     <ProjectReference Include="..\Sudoku.GeneticSharp\Sudoku.GeneticSharp.csproj" />
     <ProjectReference Include="..\Sudoku.Shared\Sudoku.Shared.csproj" />

@@ -39,6 +39,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sudoku.ConvolutionNN", "Sud
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku.LinqToZ3", "Sudoku.LinqToZ3\Sudoku.LinqToZ3.csproj", "{B79AE2DB-B8D9-47B9-9258-39B35EDDA410}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku.Norvig", "Sudoku.Norvig\Sudoku.Norvig.csproj", "{5A517923-A3EA-4CC5-A128-C7EC9F159B79}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{AD78958C-0B81-436B-BB99-9485B7045C98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD78958C-0B81-436B-BB99-9485B7045C98}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD78958C-0B81-436B-BB99-9485B7045C98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A517923-A3EA-4CC5-A128-C7EC9F159B79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A517923-A3EA-4CC5-A128-C7EC9F159B79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A517923-A3EA-4CC5-A128-C7EC9F159B79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A517923-A3EA-4CC5-A128-C7EC9F159B79}.Release|Any CPU.Build.0 = Release|Any CPU
 		{85B499F5-EC65-414B-B093-43ED02A26625}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{85B499F5-EC65-414B-B093-43ED02A26625}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{85B499F5-EC65-414B-B093-43ED02A26625}.Release|Any CPU.ActiveCfg = Release|Any CPU
