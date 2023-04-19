@@ -41,6 +41,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sudoku.LinqToZ3", "Sudoku.L
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sudoku.Backtracking", "Sudoku.Backtracking\Sudoku.Backtracking.csproj", "{A825DCE4-6B76-40EE-B725-5F13D26D0D84}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku.Norvig", "Sudoku.Norvig\Sudoku.Norvig.csproj", "{5A517923-A3EA-4CC5-A128-C7EC9F159B79}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,11 +60,15 @@ Global
 		{AD78958C-0B81-436B-BB99-9485B7045C98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AD78958C-0B81-436B-BB99-9485B7045C98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD78958C-0B81-436B-BB99-9485B7045C98}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AD78958C-0B81-436B-BB99-9485B7045C98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD78958C-0B81-436B-BB99-9485B7045C98}.Release|Any CPU.Build.0 = Release|Any CP
 		{BC91E1B9-2417-478A-BBAC-E51BB31F4630}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BC91E1B9-2417-478A-BBAC-E51BB31F4630}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC91E1B9-2417-478A-BBAC-E51BB31F4630}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC91E1B9-2417-478A-BBAC-E51BB31F4630}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A517923-A3EA-4CC5-A128-C7EC9F159B79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A517923-A3EA-4CC5-A128-C7EC9F159B79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A517923-A3EA-4CC5-A128-C7EC9F159B79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A517923-A3EA-4CC5-A128-C7EC9F159B79}.Release|Any CPU.Build.0 = Release|Any CPU
 		{85B499F5-EC65-414B-B093-43ED02A26625}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{85B499F5-EC65-414B-B093-43ED02A26625}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{85B499F5-EC65-414B-B093-43ED02A26625}.Release|Any CPU.ActiveCfg = Release|Any CPU
