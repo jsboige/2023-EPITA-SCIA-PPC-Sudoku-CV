@@ -207,7 +207,7 @@ namespace Sudoku.Shared
             if (MacInstaller.IsModuleInstalled(module_name) && !force)
                 return;
             // string str1 = Path.Combine(MacInstaller.EmbeddedPythonHome, "Scripts", "pip");
-            string str1 = Path.Combine(MacInstaller.InstallPythonHome, "bin", "pip3");
+            string str1 = Path.Combine(MacInstaller.InstallPythonHome, "", "pip3");
             // string str1 = "pip3";
             string str2 = force ? " --force-reinstall" : "";
             if (version.Length > 0)
@@ -218,12 +218,12 @@ namespace Sudoku.Shared
 
         public static async Task InstallPip()
         {
-            string path = Path.Combine(MacInstaller.InstallPythonHome, "Lib");
+            string path = Path.Combine(MacInstaller.InstallPythonHome, "");
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path);
             MacInstaller.RunCommand("cd " + path + " && curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py");
             // MacInstaller.RunCommand("cd " + MacInstaller.EmbeddedPythonHome + " && python.exe Lib\\get-pip.py");
-            MacInstaller.RunCommand("cd " + MacInstaller.InstallPythonHome + " && python get-pip.py");
+            MacInstaller.RunCommand("cd " + MacInstaller.InstallPythonHome + " && python3 get-pip.py");
         }
 
         public static async Task<bool> TryInstallPip(bool force = false)
@@ -244,7 +244,7 @@ namespace Sudoku.Shared
 
         public static bool IsPythonInstalled() => File.Exists(Path.Combine(MacInstaller.InstallPythonHome, "Python"));
 
-        public static bool IsPipInstalled() => File.Exists(Path.Combine(MacInstaller.InstallPythonHome, "bin", "pip3"));
+        public static bool IsPipInstalled() => File.Exists(Path.Combine(MacInstaller.InstallPythonHome, "", "pip3"));
 
         public static bool IsModuleInstalled(string module)
         {

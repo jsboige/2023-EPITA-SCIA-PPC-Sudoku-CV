@@ -7,6 +7,7 @@
     <PackageReference Include="BenchmarkDotNet" Version="0.13.5" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <ProjectReference Include="..\Sudoku.Demo\Sudoku.Demo.csproj" />
     <ProjectReference Include="..\Sudoku.DLXLib\Sudoku.DLXLib.csproj" />
     <ProjectReference Include="..\Sudoku.Shared\Sudoku.Shared.csproj" />
@@ -14,5 +15,18 @@
   <ItemGroup>
     <Content Include="Sudoku.Solver\.idea\.idea.Sudoku.Solver.dir\.idea\.gitignore" />
     <Content Include="Sudoku.Solver\.idea\.idea.Sudoku.Solver.dir\.idea\encodings.xml" />
+=======
+    <ProjectReference Include="..\Sudoku.ChocoSolver\Sudoku.ChocoSolver.csproj" />
+    <ProjectReference Include="..\Sudoku.Backtracking\Sudoku.Backtracking.csproj" />
+    <ProjectReference Include="..\Sudoku.LinqToZ3\Sudoku.LinqToZ3.csproj" />
+    <ProjectReference Include="..\Sudoku.ParticleSwarmOptimization\Sudoku.ParticleSwarmOptimization.csproj" />
+    <ProjectReference Include="..\Sudoku.ColorGraph\Sudoku.ColorGraph.csproj" />
+    <ProjectReference Include="..\Sudoku.Demo\Sudoku.Demo.csproj" />
+    <ProjectReference Include="..\Sudoku.OrTools\Sudoku.OrTools.csproj" />
+    <ProjectReference Include="..\Sudoku.GeneticSharp\Sudoku.GeneticSharp.csproj" />
+    <ProjectReference Include="..\Sudoku.Shared\Sudoku.Shared.csproj" />
+    <ProjectReference Include="..\Sudoku.z3\Sudoku.z3.csproj" />
+    <ProjectReference Include="..\Sudoku.ConvolutionNN\Sudoku.ConvolutionNN.csproj" />
+>>>>>>> 69e5720053ab3072762158cee3c40076b9742e5f
   </ItemGroup>
 </Project>

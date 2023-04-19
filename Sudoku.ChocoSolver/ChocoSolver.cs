@@ -1,57 +1,77 @@
-﻿using Python.Runtime;
-using Sudoku.ChocoSolver;
-using Sudoku.Shared;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Resources;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Sudoku.Shared;
+using fr.epita;
 
-namespace Sudoku.Demo
+namespace Sudoku.ChocoSolver;
+
+public class ChocoSolverDefault : ISudokuSolver
 {
-    public class ChocoSolver : PythonSolverBase
+	protected fr.epita.SudokuSolver JavaSolver;
+	public SudokuGrid Solve(SudokuGrid s)
+	{
+		var toSolve = s.CloneSudoku();
+		this.JavaSolver = new fr.epita.SudokuSolver(toSolve.Cells);
+		Solve();
+		return toSolve;
+	}
 
-    {
-        public override Shared.SudokuGrid Solve(Shared.SudokuGrid s)
-        {
-            //System.Diagnostics.Debugger.Break();
+	protected virtual void Solve()
+	{
+		this.JavaSolver.solve(-1);
+	}
+}
 
-            //For some reason, the Benchmark runner won't manage to get the mutex whereas individual execution doesn't cause issues
-            using (Py.GIL())
-            {
-                // create a Python scope
-                using (PyModule scope = Py.CreateScope())
-                {
-                    // convert the Cells array object to a PyObject
-                    PyObject pyCells = s.Cells.ToPython();
+public class ChocoSolverInputOrderLBSearch : ChocoSolverDefault
+{
+	protected override void Solve()
+	{
+		this.JavaSolver.solve(0);
+	}
+}
 
-                    // create a Python variable "instance"
-                    scope.Set("instance", pyCells);
+public class ChocoSolverDomOverWDegSearch : ChocoSolverDefault
+{
+	protected override void Solve()
+	{
+		this.JavaSolver.solve(1);
+	}
+}
 
-                    //this.AddNumpyConverterScript(scope);
+public class ChocoSolverMinDomLBSearch : ChocoSolverDefault
+{
+	protected override void Solve()
+	{
+		this.JavaSolver.solve(2);
+	}
+}
 
-                    // run the Python script
-                    string code = Resource1.solver_py;
-                    scope.Exec(code);
+public class ChocoSolverRandomSearch : ChocoSolverDefault
+{
+	protected override void Solve()
+	{
+		this.JavaSolver.solve(3);
+	}
+}
 
-                    //Retrieve solved Sudoku variable
-                    var result = scope.Get("r");
+public class ChocoSolverConflictHistorySearch : ChocoSolverDefault
+{
+	protected override void Solve()
+	{
+		this.JavaSolver.solve(4);
+	}
+}
 
-                    //Convert back to C# object
-                    var managedResult = result.As<int[][]>();
-                    //var convertesdResult = managedResult.Select(objList => objList.Select(o => (int)o).ToArray()).ToArray();
-                    return new Shared.SudokuGrid() { Cells = managedResult };
-                }
-            }
-        }
-        
-        protected override void InitializePythonComponents()
-        {
-            //declare your pip packages here
-            InstallPipModule("numpy");
-            InstallPipModule("pycsp3");
-            base.InitializePythonComponents();
-        }
-    }
+public class ChocoSolverActivityBasedSearch : ChocoSolverDefault
+{
+	protected override void Solve()
+	{
+		this.JavaSolver.solve(5);
+	}
+}
+
+public class ChocoSolverFailureRateBasedSearch : ChocoSolverDefault
+{
+	protected override void Solve()
+	{
+		this.JavaSolver.solve(6);
+	}
 }
