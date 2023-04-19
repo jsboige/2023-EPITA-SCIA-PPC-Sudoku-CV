@@ -9,7 +9,7 @@ using Z3.LinqBinding;
 
 namespace LinqToZ3
 {
-
+    // Comme je vous ai mis dans la PR, je crois qu'il y a eu incompréhension sur le travail. Votre solver est plus abstrait que celui de vos camarades, le code est à faire dans LinqBinding, et du côté du théorème, la substitution doit être un switch, et le passage en bitvector uniquement lié au type de SudokuGrid.Cells. n"hésitez pas à le passer en Byte ou refaire une classe au besoin.
     public class LinqToZ3SolverApiZ3 : ISudokuSolver
     {
 
