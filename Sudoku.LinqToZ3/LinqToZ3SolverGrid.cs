@@ -1,7 +1,7 @@
 using Sudoku.Shared;
 using Z3.LinqBinding;
 
-namespace LinqToZ3
+namespace Sudoku.LinqToZ3
 {
     public class LinqToZ3SolverGrid : ISudokuSolver
     {

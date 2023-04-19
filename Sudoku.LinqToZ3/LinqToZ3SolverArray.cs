@@ -161,76 +161,6 @@ namespace Z3.LinqBinding.Sudoku
 			return output.ToString();
 		}
 
-		/// <summary>
-		/// Parses a single Sudoku
-		/// </summary>
-		/// <param name="sudokuAsString">the string representing the sudoku</param>
-		/// <returns>the parsed sudoku</returns>
-		public static SudokuAsArray Parse(string sudokuAsString)
-		{
-			return ParseMulti(new[] { sudokuAsString })[0];
-		}
-
-		/// <summary>
-		/// Parses a file with one or several sudokus
-		/// </summary>
-		/// <param name="fileName"></param>
-		/// <returns>the list of parsed Sudokus</returns>
-		public static List<SudokuAsArray> ParseFile(string fileName)
-		{
-			return ParseMulti(File.ReadAllLines(fileName));
-		}
-
-		/// <summary>
-		/// Parses a list of lines into a list of sudoku, accounting for most cases usually encountered
-		/// </summary>
-		/// <param name="lines">the lines of string to parse</param>
-		/// <returns>the list of parsed Sudokus</returns>
-		public static List<SudokuAsArray> ParseMulti(string[] lines)
-		{
-			var toReturn = new List<SudokuAsArray>();
-			var cells = new List<int>(81);
-			Console.WriteLine("debut");
-			Console.WriteLine(lines.Length);
-			Console.WriteLine("fin");
-			foreach (var line in lines)
-			{
-				if (line.Length > 0)
-				{
-					if (char.IsDigit(line[0]) || line[0] == '.' || line[0] == 'X' || line[0] == '-')
-					{
-						foreach (char c in line)
-						{
-							int? cellToAdd = null;
-							if (char.IsDigit(c))
-							{
-								var cell = (int)Char.GetNumericValue(c);
-								cellToAdd = cell;
-							}
-							else
-							{
-								if (c == '.' || c == 'X' || c == '-')
-								{
-									cellToAdd = 0;
-								}
-							}
-
-							if (cellToAdd.HasValue)
-							{
-								cells.Add(cellToAdd.Value);
-								if (cells.Count == 81)
-								{
-									toReturn.Add(new SudokuAsArray() { Cells = new List<int>(cells) });
-									cells.Clear();
-								}
-							}
-						}
-					}
-				}
-			}
-
-			return toReturn;
-		}
 
 		public static SudokuAsArray ParseGrid(SudokuGrid s)
 		{
@@ -246,7 +176,9 @@ namespace Z3.LinqBinding.Sudoku
 			cells.Clear();
 			return toReturn;
 		}
-		public string export()
+
+
+		public string Export()
 		{
 			var output = new StringBuilder();
 
@@ -263,7 +195,7 @@ namespace Z3.LinqBinding.Sudoku
 		}
 	}
 }
-namespace LinqToZ3
+namespace Sudoku.LinqToZ3
 {
 	public class LinqToZ3SolverArray : ISudokuSolver
 	{
@@ -274,7 +206,7 @@ namespace LinqToZ3
 			var grid = Z3.LinqBinding.Sudoku.SudokuAsArray.ParseGrid(s);
 			var theorem = grid.CreateTheorem(context);
 			var sudokuSolved = theorem.Solve();
-			var toReturn = SudokuGrid.ReadSudoku(sudokuSolved.export());
+			var toReturn = SudokuGrid.ReadSudoku(sudokuSolved.Export());
 			return toReturn;
 		}
 	}
