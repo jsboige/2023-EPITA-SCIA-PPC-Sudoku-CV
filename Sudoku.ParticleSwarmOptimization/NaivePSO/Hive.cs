@@ -31,22 +31,27 @@ namespace Sudoku.ParticleSwarmOptimization
         {
             bestWorker = workers.Min();
             bestExplorer = explorers.Min();
-            // Console.WriteLine("Best Worker: " + bestWorker.Error + " Best Explorer:" + bestExplorer.Error);
+            if (PSOSolver.verbose)
+                Console.WriteLine("Best Worker: " + bestWorker.Error + " Best Explorer:" + bestExplorer.Error);
             if (bestOrganism == null || bestWorker.Error < bestOrganism.Error)
                 bestOrganism = bestWorker;
             if (bestOrganism == null || bestExplorer.Error < bestOrganism.Error)
                 bestOrganism = bestExplorer;
         }
 
-        public SudokuGrid Solve()
+        public SudokuGrid Solve(uint max_epoch = 1000, uint max_age = 1000)
         {
-            for (int i = 0; i < 100000; i++)
+            // Start the search for a solution
+            for (int i = 0; i < max_epoch; i++)
             {
-                //Console.WriteLine("Epoch: " + i + " Error: " + bestOrganism.Error);
+                if (PSOSolver.verbose)
+                    Console.WriteLine("Epoch: " + i + " Error: " + bestOrganism.Error);
+                // If the best solution is perfect, stop the search
                 if (bestOrganism.Error == 0)
                     break;
-                Parallel.ForEach(explorers, organism => organism.SearchBetterSolution());
-                Parallel.ForEach(workers, organism => organism.SearchBetterSolution());
+                
+                Parallel.ForEach(explorers, organism => organism.SearchBetterSolution(max_age));
+                Parallel.ForEach(workers, organism => organism.SearchBetterSolution(max_age));
                 UpdateBestOrganism();
                 workers.Max()?.Replace(bestWorker, bestExplorer);
             }

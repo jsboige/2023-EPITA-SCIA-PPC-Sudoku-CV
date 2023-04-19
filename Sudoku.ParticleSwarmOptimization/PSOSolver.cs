@@ -55,12 +55,27 @@ namespace Sudoku.ParticleSwarmOptimization
 	public class PSOSolver : ISudokuSolver
     {
         public static SudokuGrid original = new SudokuGrid();
+        public static bool verbose = false;
         public SudokuGrid Solve(SudokuGrid s)
         {
             // Initialization of the hive
             original = s;
-            var hive = new Hive(1, 100);
+            var hive = new Hive(10, 1000);
             return hive.Solve();
+        }
+    }
+
+	public class TSPPSOSolver : ISudokuSolver
+    {
+        public static SudokuGrid original = new SudokuGrid();
+        public static bool verbose = true;
+        public SudokuGrid Solve(SudokuGrid s)
+        {
+            original = s;
+
+			// TSP solver from https://www.codeproject.com/Articles/1182794/Solving-the-Travelling-Salesman-Problem-With-a-Par
+			var tsp = new TSP();
+			return tsp.Optimize();
         }
     }
 }
