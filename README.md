@@ -1,6 +1,12 @@
 # 2023-EPITA-SCIA-PPC-Sudoku-CP
 Bienvenue sur le dépôt du TP Sudoku.....
 
+## Présentation des solvers
+
+### [Solvers LinqToZ3](Sudoku.LinqToZ3/README.md)
+
+## Instructions
+
 Chaque groupe est invité à créer un [Fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo) de ce dépôt principal muni d'un compte sur Github, et d'indiquer dans le fil de suivi de projet du groupe sur le forum son adresse. 
 
 Vous pourrez ensuite travailler de façon collaborative sur ce fork  en  [attribuant les permissions d'éditions](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-user-account/managing-access-to-your-personal-repositories/inviting-collaborators-to-a-personal-repository) aux autres membres du groupe, en clonant votre fork sur vos machines, par le biais de validations (commits), de push pour remonter les validations sur le server, et de pulls/tirages sur les machines locales des utilisateurs du groupe habilités sur le fork. 
