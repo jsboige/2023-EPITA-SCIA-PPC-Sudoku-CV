@@ -1,183 +1,91 @@
+import random
 import numpy as np
-import math
-from random import choice
-import statistics 
+from simanneal import Annealer
 
-#instance = ((0,0,0,0,9,4,0,3,0),
-#          (0,0,0,5,1,0,0,0,7),
-#         (0,8,9,0,0,0,0,4,0),
-#          (0,0,0,0,0,0,2,0,8),
-#          (0,6,0,2,0,1,0,5,0),
-#          (1,0,2,0,0,0,0,0,0),
-#          (0,7,0,0,0,0,5,2,0),
-#          (9,0,0,0,6,5,0,0,0),
-#          (0,4,0,9,7,0,0,0,0))
-#r=instance
+def print_sudoku(state):
+    border = "------+-------+------"
+    rows = [state[i:i+9] for i in range(0,81,9)]
+    for i,row in enumerate(rows):
+        if i % 3 == 0:
+            print(border)
+        three = [row[i:i+3] for i in range(0,9,3)]
+        print(" | ".join(
+            " ".join(str(x or "_") for x in one)
+            for one in three
+        ))
+    print(border)
 
-def PrintSudoku(sudoku) -> None:
-    print("\n")
-    for i in range(len(sudoku)):
-        line = ""
-        if i == 3 or i == 6:
-            print("---------------------")
-        for j in range(len(sudoku[i])):
-            if j == 3 or j == 6:
-                line += "| "
-            line += str(sudoku[i][j])+" "
-        print(line)
+def coord(row, col):
+    return row*9+col
 
-def FixSudokuValues(fixed_sudoku):
-    for i in range (0,9):
-        for j in range (0,9):
-            if fixed_sudoku[i,j] != 0:
-                fixed_sudoku[i,j] = 1
-    
-    return fixed_sudoku
+def block_indices(block_num):
+    """return linear array indices corresp to the sq block, row major, 0-indexed.
+    block:
+       0 1 2     (0,0) (0,3) (0,6)
+       3 4 5 --> (3,0) (3,3) (3,6)
+       6 7 8     (6,0) (6,3) (6,6)
+    """
+    firstrow = (block_num // 3) * 3
+    firstcol = (block_num % 3) * 3
+    indices = [coord(firstrow+i, firstcol+j) for i in range(3) for j in range(3)]
+    return indices
 
-# Cost Function    
-def CalculateNumberOfErrors(sudoku):
-    numberOfErrors = 0 
-    for i in range (0,9):
-        numberOfErrors += CalculateNumberOfErrorsRowColumn(i ,i ,sudoku)
-    return numberOfErrors
+def initial_solution(problem):
+    """provide sudoku problem, generate an init solution by randomly filling
+    each sq block without considering row/col consistency"""
+    solution = problem.copy()
+    for block in range(9):
+        indices = block_indices(block)
+        block = problem[indices]
+        zeros = [i for i in indices if problem[i] == 0]
+        to_fill = [i for i in range(1, 10) if i not in block]
+        random.shuffle(to_fill)
+        for index, value in zip(zeros, to_fill):
+            solution[index] = value
+    return solution
 
-def CalculateNumberOfErrorsRowColumn(row, column, sudoku):
-    numberOfErrors = (9 - len(np.unique(sudoku[:,column]))) + (9 - len(np.unique(sudoku[row,:])))
-    return numberOfErrors
+class Sudoku_Sq(Annealer):
+    def __init__(self, problem):
+        self.problem = problem
+        state = initial_solution(problem)
+        super().__init__(state)
+    def move(self):
+        """randomly swap two cells in a random square"""
+        block = random.randrange(9)
+        indices = [i for i in block_indices(block) if self.problem[i] == 0]
+        if len(indices) < 2:
+            return
+        m, n = random.sample(indices, 2)
+        self.state[m], self.state[n] = self.state[n], self.state[m]
+    def energy(self):
+        """calculate the number of violations: assume all rows are OK"""
+        column_score = lambda n: -len(set(self.state[coord(i, n)] for i in range(9)))
+        row_score = lambda n: -len(set(self.state[coord(n, i)] for i in range(9)))
+        score = sum(column_score(n)+row_score(n) for n in range(9))
+        if score == -162:
+            self.user_exit = True # early quit, we found a solution
+        return score
 
-def SumOfOneBlock (sudoku, oneBlock):
-    finalSum = 0
-    for box in oneBlock:
-        finalSum += sudoku[box[0], box[1]]
-    return(finalSum)
+def solveSudoku(instance):
+    PROBLEM = np.array([element for tuple in instance for element in tuple])
+    sudoku = Sudoku_Sq(PROBLEM)
+    sudoku.copy_strategy = "method"
+    #print_sudoku(sudoku.state)
+    #sudoku.steps = 1000000
+    #auto_schedule = sudoku.auto(minutes=1)
+    #print(auto_schedule)
+    #sudoku.set_schedule(auto_schedule)
+    sudoku.Tmax = 0.1
+    sudoku.Tmin = 0.05
+    sudoku.steps = 1000000
+    sudoku.updates = 1000
+    state, e = sudoku.anneal()
+    #print("\n")
+    #print_sudoku(state)
+    #print("E=%f (expect -162)" % e)
 
-def TwoRandomBoxesWithinBlock(fixedSudoku, block):
-    while (1):
-        firstBox = choice(block)
-        secondBox = choice([box for box in block if box is not firstBox ])
-
-        if fixedSudoku[firstBox[0], firstBox[1]] != 1 and fixedSudoku[secondBox[0], secondBox[1]] != 1:
-            return([firstBox, secondBox])
-
-def FlipBoxes(sudoku, boxesToFlip):
-    proposedSudoku = np.copy(sudoku)
-    placeHolder = proposedSudoku[boxesToFlip[0][0], boxesToFlip[0][1]]
-    proposedSudoku[boxesToFlip[0][0], boxesToFlip[0][1]] = proposedSudoku[boxesToFlip[1][0], boxesToFlip[1][1]]
-    proposedSudoku[boxesToFlip[1][0], boxesToFlip[1][1]] = placeHolder
-    return (proposedSudoku)
-
-def ProposedState (sudoku, fixedSudoku, listOfBlocks):
-    randomBlock = choice(listOfBlocks)
-
-    if SumOfOneBlock(fixedSudoku, randomBlock) > 6:  
-        return(sudoku, 1, 1)
-    boxesToFlip = TwoRandomBoxesWithinBlock(fixedSudoku, randomBlock)
-    proposedSudoku = FlipBoxes(sudoku,  boxesToFlip)
-    return([proposedSudoku, boxesToFlip])
-
-def ChooseNewState (currentSudoku, fixedSudoku, listOfBlocks, sigma):
-    proposal = ProposedState(currentSudoku, fixedSudoku, listOfBlocks)
-    newSudoku = proposal[0]
-    boxesToCheck = proposal[1]
-    currentCost = CalculateNumberOfErrorsRowColumn(boxesToCheck[0][0], boxesToCheck[0][1], currentSudoku) + CalculateNumberOfErrorsRowColumn(boxesToCheck[1][0], boxesToCheck[1][1], currentSudoku)
-    newCost = CalculateNumberOfErrorsRowColumn(boxesToCheck[0][0], boxesToCheck[0][1], newSudoku) + CalculateNumberOfErrorsRowColumn(boxesToCheck[1][0], boxesToCheck[1][1], newSudoku)
-    # currentCost = CalculateNumberOfErrors(currentSudoku)
-    # newCost = CalculateNumberOfErrors(newSudoku)
-    costDifference = newCost - currentCost
-    rho = np.exp(-costDifference/sigma)
-    if(np.random.uniform(1,0,1) < rho):
-        return([newSudoku, costDifference])
-    return([currentSudoku, 0])
-
-def CreateList3x3Blocks ():
-    finalListOfBlocks = []
-    for r in range (0,9):
-        tmpList = []
-        block1 = [i + 3*((r)%3) for i in range(0,3)]
-        block2 = [i + 3*math.trunc((r)/3) for i in range(0,3)]
-        for x in block1:
-            for y in block2:
-                tmpList.append([x,y])
-        finalListOfBlocks.append(tmpList)
-    return(finalListOfBlocks)
-
-def RandomlyFill3x3Blocks(sudoku, listOfBlocks):
-    for block in listOfBlocks:
-        for box in block:
-            if sudoku[box[0],box[1]] == 0:
-                currentBlock = sudoku[block[0][0]:(block[-1][0]+1),block[0][1]:(block[-1][1]+1)]
-                sudoku[box[0],box[1]] = choice([i for i in range(1,10) if i not in currentBlock])
-    return sudoku
-
-def CalculateInitialSigma (sudoku, fixedSudoku, listOfBlocks):
-    listOfDifferences = []
-    tmpSudoku = sudoku
-    for i in range(1,10):
-        tmpSudoku = ProposedState(tmpSudoku, fixedSudoku, listOfBlocks)[0]
-        listOfDifferences.append(CalculateNumberOfErrors(tmpSudoku))
-    return (statistics.pstdev(listOfDifferences))
-
-def ChooseNumberOfItterations(fixed_sudoku):
-    numberOfItterations = 0
-    for i in range (0,9):
-        for j in range (0,9):
-            if fixed_sudoku[i,j] != 0:
-                numberOfItterations += 1
-    return numberOfItterations
-
-def solveSudoku(inst):
-    sudoku = np.array([[int(i) for i in line] for line in inst])
-    solutionFound = 0
-    while (solutionFound == 0):
-        decreaseFactor = 0.99
-        stuckCount = 0
-        fixedSudoku = np.copy(sudoku)
-        #PrintSudoku(sudoku)
-        FixSudokuValues(fixedSudoku)
-        listOfBlocks = CreateList3x3Blocks()
-        tmpSudoku = RandomlyFill3x3Blocks(sudoku, listOfBlocks)
-        sigma = CalculateInitialSigma(sudoku, fixedSudoku, listOfBlocks)
-        score = CalculateNumberOfErrors(tmpSudoku)
-        itterations = ChooseNumberOfItterations(fixedSudoku)
-        if score <= 0:
-            solutionFound = 1
-
-        while solutionFound == 0:
-            previousScore = score
-            for i in range (0, itterations):
-                newState = ChooseNewState(tmpSudoku, fixedSudoku, listOfBlocks, sigma)
-                tmpSudoku = newState[0]
-                scoreDiff = newState[1]
-                score += scoreDiff
-                if score <= 0:
-                    solutionFound = 1
-                    break
-
-            sigma *= decreaseFactor
-            if score <= 0:
-                solutionFound = 1
-                break
-            if score >= previousScore:
-                stuckCount += 1
-            else:
-                stuckCount = 0
-            if (stuckCount > 80):
-                sigma += 2
-            if(CalculateNumberOfErrors(tmpSudoku)==0):
-                #PrintSudoku(tmpSudoku)
-                break
-
-    res = tuple(tuple(int(x) for x in row) for row in tmpSudoku)
+    state = state.reshape(9, 9)
+    res = tuple(tuple(int(x) for x in row) for row in state)
     return res
-
-# solution = solveSudoku(sudoku)
-# print(CalculateNumberOfErrors(solution))
-# PrintSudoku(solution)
-
-#if(solveSudoku(instance)):
-
-#	r=instance
-#else:
-#	print ("Aucune solution trouvée")
 
 r = solveSudoku(instance)
