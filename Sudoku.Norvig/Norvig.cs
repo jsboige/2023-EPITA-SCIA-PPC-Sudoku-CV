@@ -171,7 +171,8 @@ public class NorvigSolver:ISudokuSolver
         // Choose the unfilled square s with the fewest possibilities
         var minSquare = squares.Where(s => values[s].Length > 1).OrderBy(s => values[s].Length).First();
 
-        return Some(values[minSquare].Select(d => Search(Assign(new Dictionary<string, string>(values), minSquare, d.ToString()))));
+        return Some(values[minSquare].Select(d => 
+            Search(Assign(new Dictionary<string, string>(values), minSquare, d.ToString()))));
     }
 
     private Dictionary<string, string> Some(IEnumerable<Dictionary<string, string>> seq)
