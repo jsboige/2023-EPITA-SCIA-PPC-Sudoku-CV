@@ -44,7 +44,6 @@ namespace Sudoku.Backtracking {
                 resourceCulture = value;
             }
         }
-        
         internal static string Backtracking_py {
             get {
                 return ResourceManager.GetString("Backtracking.py", resourceCulture);
