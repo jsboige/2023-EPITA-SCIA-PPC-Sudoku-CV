@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Puzzles", "Puzzles", "{5351
 		Puzzles\Sudoku_top95.txt = Puzzles\Sudoku_top95.txt
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sudoku.Backtracking", "Sudoku.Backtracking\Sudoku.Backtracking.csproj", "{1C50AE77-2CE9-4BD8-ADFE-3C3A255FFC78}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sudoku.Demo", "Sudoku.Demo\Sudoku.Demo.csproj", "{AD78958C-0B81-436B-BB99-9485B7045C98}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sudoku.DLXLib", "Sudoku.DLXLib\Sudoku.DLXLib.csproj", "{BC91E1B9-2417-478A-BBAC-E51BB31F4630}"
@@ -37,13 +39,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sudoku.GeneticSharp", "Sudo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sudoku.SimulatedAnnealing", "Sudoku.SimulatedAnnealing\Sudoku.SimulatedAnnealing.csproj", "{B6374D8E-9AA0-4D19-98D3-7C16E794ED53}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku.ConvolutionNN", "Sudoku.ConvolutionNN\Sudoku.ConvolutionNN.csproj", "{71B34C6A-0D7D-4741-B249-BEDCA07C6BA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sudoku.ConvolutionNN", "Sudoku.ConvolutionNN\Sudoku.ConvolutionNN.csproj", "{71B34C6A-0D7D-4741-B249-BEDCA07C6BA6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sudoku.LinqToZ3", "Sudoku.LinqToZ3\Sudoku.LinqToZ3.csproj", "{B79AE2DB-B8D9-47B9-9258-39B35EDDA410}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sudoku.Backtracking", "Sudoku.Backtracking\Sudoku.Backtracking.csproj", "{A825DCE4-6B76-40EE-B725-5F13D26D0D84}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sudoku.Norvig", "Sudoku.Norvig\Sudoku.Norvig.csproj", "{5A517923-A3EA-4CC5-A128-C7EC9F159B79}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku.Norvig", "Sudoku.Norvig\Sudoku.Norvig.csproj", "{5A517923-A3EA-4CC5-A128-C7EC9F159B79}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NorvigArray", "NorvigArray\NorvigArray.csproj", "{D22C7D90-930B-46D6-B124-C102A894FB0F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,18 +61,18 @@ Global
 		{3F6D87E5-3288-46C4-B192-F91D5FBB075B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F6D87E5-3288-46C4-B192-F91D5FBB075B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F6D87E5-3288-46C4-B192-F91D5FBB075B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C50AE77-2CE9-4BD8-ADFE-3C3A255FFC78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C50AE77-2CE9-4BD8-ADFE-3C3A255FFC78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C50AE77-2CE9-4BD8-ADFE-3C3A255FFC78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C50AE77-2CE9-4BD8-ADFE-3C3A255FFC78}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AD78958C-0B81-436B-BB99-9485B7045C98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AD78958C-0B81-436B-BB99-9485B7045C98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD78958C-0B81-436B-BB99-9485B7045C98}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AD78958C-0B81-436B-BB99-9485B7045C98}.Release|Any CPU.Build.0 = Release|Any CP
+		{AD78958C-0B81-436B-BB99-9485B7045C98}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BC91E1B9-2417-478A-BBAC-E51BB31F4630}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BC91E1B9-2417-478A-BBAC-E51BB31F4630}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC91E1B9-2417-478A-BBAC-E51BB31F4630}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC91E1B9-2417-478A-BBAC-E51BB31F4630}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5A517923-A3EA-4CC5-A128-C7EC9F159B79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5A517923-A3EA-4CC5-A128-C7EC9F159B79}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5A517923-A3EA-4CC5-A128-C7EC9F159B79}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5A517923-A3EA-4CC5-A128-C7EC9F159B79}.Release|Any CPU.Build.0 = Release|Any CPU
 		{85B499F5-EC65-414B-B093-43ED02A26625}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{85B499F5-EC65-414B-B093-43ED02A26625}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{85B499F5-EC65-414B-B093-43ED02A26625}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -111,10 +113,14 @@ Global
 		{B79AE2DB-B8D9-47B9-9258-39B35EDDA410}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B79AE2DB-B8D9-47B9-9258-39B35EDDA410}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B79AE2DB-B8D9-47B9-9258-39B35EDDA410}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A825DCE4-6B76-40EE-B725-5F13D26D0D84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A825DCE4-6B76-40EE-B725-5F13D26D0D84}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A825DCE4-6B76-40EE-B725-5F13D26D0D84}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A825DCE4-6B76-40EE-B725-5F13D26D0D84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A517923-A3EA-4CC5-A128-C7EC9F159B79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A517923-A3EA-4CC5-A128-C7EC9F159B79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A517923-A3EA-4CC5-A128-C7EC9F159B79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A517923-A3EA-4CC5-A128-C7EC9F159B79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D22C7D90-930B-46D6-B124-C102A894FB0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D22C7D90-930B-46D6-B124-C102A894FB0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D22C7D90-930B-46D6-B124-C102A894FB0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D22C7D90-930B-46D6-B124-C102A894FB0F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
