@@ -9,6 +9,8 @@ using BenchmarkDotNet.Environments;
 using BenchmarkDotNet.Jobs;
 using BenchmarkDotNet.Mathematics;
 using BenchmarkDotNet.Order;
+using BenchmarkDotNet.Toolchains.InProcess.Emit;
+using BenchmarkDotNet.Toolchains.InProcess.NoEmit;
 using Sudoku.Shared;
 
 
@@ -60,6 +62,7 @@ namespace Sudoku.Benchmark
                     //.WithWarmupCount(1)
                     .WithIterationCount(1)
                     .WithInvocationCount(1)
+                    .WithToolchain(InProcessEmitToolchain.Instance)
 
                 );
 
@@ -98,6 +101,7 @@ namespace Sudoku.Benchmark
                     //.WithWarmupCount(1)
                     .WithIterationCount(3)
                     .WithInvocationCount(3)
+                    .WithToolchain(InProcessEmitToolchain.Instance)
 
                 );
 
