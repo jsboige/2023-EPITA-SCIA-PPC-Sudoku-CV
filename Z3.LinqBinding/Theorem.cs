@@ -223,8 +223,6 @@ namespace Z3.LinqBinding
 
 
 
-
-
         private Environment GetEnvironment(Context context, Type targetType)
         {
             return GetEnvironment(context, targetType, targetType.Name, false);
@@ -296,10 +294,18 @@ namespace Z3.LinqBinding
                                 arrDomain = context.RealSort;
                                 arrRange = context.RealSort;
                                 break;
+                            case TypeCode.Object when elType == typeof(BitArray):
+                                arrDomain = context.IntSort;
+                                arrRange = context.IntSort; // COMPORTEMENT COMME UN INT 
+                                Console.WriteLine("ICICCI\n\n\n\n\n\n\n\n\n\naeaze");
+                                break;
+                                
+
                             case TypeCode.Object:
                                 toReturn.IsArray = true;
                                 CreateEnvironmentProperties(toReturn, context, elType, prefix, true);
                                 return toReturn;
+                            
                             default:
                                 throw new NotSupportedException($"Unsupported member type {targetType.FullName}");
 
@@ -332,7 +338,9 @@ namespace Z3.LinqBinding
                     case TypeCode.Double:
                         constrExp = context.MkRealConst(prefix);
                         break;
+                    
                     case TypeCode.Object:
+                        Console.WriteLine("ICICIC\n\n\n\n\nssss");
                         CreateEnvironmentProperties(toReturn, context, targetType, prefix, false);
                         return toReturn;
                     default:
